@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap");
+
+.App {
+  text-align: center;
+  /* padding-top: 20px; */
+  font-family: "Montserrat", sans-serif;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.color-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s ease-in-out;
+}
+
+.color-input {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  border: none;
+  border-bottom: 5px solid #000000;
+  border-radius: 0px;
+  outline: none;
+  background: transparent;
+  transition: color 0.5s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.color-strings-container {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.copyable-text {
+  cursor: pointer;
+  /* margin: 10px 0px; */
+  font-weight: bold;
+  font-size: 18px;
+  color: #4c4c4c;
+}
+
+.color {
+  cursor: pointer;
+  transition: background 0.5s ease-in-out;
+}
+
+.colors-container {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.palette {
+  margin: 30px;
+}
+
+.palette-title {
+  font-weight: bold;
+  color: grey;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
