@@ -85,7 +85,7 @@ const App: React.FC = () => {
                 : "black"
           }}
           className="color-input"
-          placeholder="Type a color"
+          placeholder="Enter a color"
           value={colorInput}
           onChange={onColorInputChange}
         />
