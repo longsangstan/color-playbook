@@ -16,9 +16,7 @@ const PalettesContainer: React.FC<PalettesContainerProps> = props => {
       <div className="palettes-container-title">{title}</div>
 
       {palettes.map(palette => (
-        <div className="palette-wrapper">
-          <Palette tinyColors={palette} onColorClick={onColorClick} />
-        </div>
+        <Palette tinyColors={palette} onColorClick={onColorClick} />
       ))}
     </div>
   );

@@ -14,9 +14,7 @@ const Palette: React.FC<PaletteProps> = props => {
         <div
           className="color"
           style={{
-            background: t.toHexString(),
-            height: 50,
-            width: 600 / tinyColors.length
+            background: t.toHexString()
           }}
           onClick={() => onColorClick(t.toHexString())}
         />
