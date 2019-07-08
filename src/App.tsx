@@ -45,9 +45,27 @@ const getPrimaryPalette = (colorInput: string): tinycolor.Instance[] => {
 
 const App: React.FC = () => {
   const [colorInput, setColorInput] = useState("");
+  const [pickerColors, setPickerColors] = useState([
+    tinycolor.random(),
+    tinycolor.random(),
+    tinycolor.random(),
+    tinycolor.random(),
+    tinycolor.random(),
+    tinycolor.random(),
+    tinycolor.random()
+  ]);
 
   const onColorInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColorInput(e.target.value);
+    setPickerColors([
+      tinycolor.random(),
+      tinycolor.random(),
+      tinycolor.random(),
+      tinycolor.random(),
+      tinycolor.random(),
+      tinycolor.random(),
+      tinycolor.random()
+    ]);
   };
 
   /**
