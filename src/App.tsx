@@ -4,7 +4,28 @@ import "./App.css";
 import tinycolor from "tinycolor2";
 
 import PalettesContainer from "./PalettesContainer";
+import Palette from "./Palette";
 import CopyableText from "./CopyableText";
+
+// const pickerColors = [
+//   tinycolor("#E91E63"),
+//   tinycolor("#FF9800"),
+//   tinycolor("#FFEB3B"),
+//   tinycolor("#8BC34A"),
+//   tinycolor("#51adf6"),
+//   tinycolor("#3F51B5"),
+//   tinycolor("#8259cb")
+// ];
+
+const pickerColors = [
+  tinycolor.random(),
+  tinycolor.random(),
+  tinycolor.random(),
+  tinycolor.random(),
+  tinycolor.random(),
+  tinycolor.random(),
+  tinycolor.random()
+];
 
 const getPrimaryPalette = (colorInput: string): tinycolor.Instance[] => {
   let output = [];
@@ -71,11 +92,13 @@ const App: React.FC = () => {
           backgroundColor: tinycolor(colorInput).isValid()
             ? tinycolor(colorInput).toHexString()
             : "white",
-          height: "20vh"
+          height: "25vh"
         }}
       >
+        <div style={{ height: 50 }} />
         <input
           style={{
+            margin: 5,
             borderColor: tinycolor(colorInput).isValid()
               ? "transparent"
               : "black",
@@ -85,10 +108,23 @@ const App: React.FC = () => {
                 : "black"
           }}
           className="color-input"
-          placeholder="Enter a color"
+          placeholder="pick or enter a color"
           value={colorInput}
           onChange={onColorInputChange}
         />
+
+        <div
+          className="color-input-picker"
+          style={{
+            opacity: tinycolor(colorInput).isValid() ? 0 : 1
+          }}
+        >
+          <Palette
+            smallColorPlate={true}
+            tinyColors={pickerColors}
+            onColorClick={setColorInput}
+          />
+        </div>
       </div>
 
       {tinycolor(colorInput).isValid() ? (

@@ -29,6 +29,7 @@
 
 .color-input-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: background 0.5s ease-in-out;
@@ -84,6 +85,11 @@
   font-weight: bold;
   color: grey;
   margin-bottom: 5px;
+}
+
+.color-input-picker {
+  height: 50px;
+  transition: opacity 0.5s;
 }
 
 @keyframes App-logo-spin {
