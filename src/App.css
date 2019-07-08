@@ -66,18 +66,21 @@
   transition: background 0.5s ease-in-out;
 }
 
-.colors-container {
-  margin: 10px;
+.palette {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.palette {
+.palette-wrapper {
+  margin: 5px;
+}
+
+.palettes-container {
   margin: 30px;
 }
 
-.palette-title {
+.palettes-container-title {
   font-weight: bold;
   color: grey;
 }

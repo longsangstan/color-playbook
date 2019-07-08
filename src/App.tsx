@@ -3,24 +3,20 @@ import "./App.css";
 
 import tinycolor from "tinycolor2";
 
-import Palette from "./Palette";
+import PalettesContainer from "./PalettesContainer";
 import CopyableText from "./CopyableText";
 
-const colorToShades = (colorInput: string): tinycolor.Instance[] => {
+const getPrimaryPalette = (colorInput: string): tinycolor.Instance[] => {
   let output = [];
 
-  for (let i = 0; i < 10; i++) {
-    output.push(tinycolor(colorInput).darken(i * 5));
+  for (let i = 2; i >= 1; i--) {
+    output.push(tinycolor(colorInput).darken(i * 10));
   }
 
-  return output;
-};
+  output.push(tinycolor(colorInput));
 
-const colorToTints = (colorInput: string): tinycolor.Instance[] => {
-  let output = [];
-
-  for (let i = 0; i < 10; i++) {
-    output.push(tinycolor(colorInput).lighten(i * 5));
+  for (let i = 1; i <= 2; i++) {
+    output.push(tinycolor(colorInput).lighten(i * 10));
   }
 
   return output;
@@ -32,6 +28,40 @@ const App: React.FC = () => {
   const onColorInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColorInput(e.target.value);
   };
+
+  /**
+   * Palettes
+   */
+
+  const complementPalette = getPrimaryPalette(
+    tinycolor(colorInput)
+      .complement()
+      .toHexString()
+  );
+
+  const triadPalettes = tinycolor(colorInput)
+    .triad()
+    .map(t => getPrimaryPalette(t.toHexString()));
+
+  triadPalettes.shift();
+
+  const analogousPalettes = tinycolor(colorInput)
+    .analogous(3, 12)
+    .map(t => getPrimaryPalette(t.toHexString()));
+
+  analogousPalettes.shift();
+
+  const splitcomplementPalettes = tinycolor(colorInput)
+    .splitcomplement()
+    .map(t => getPrimaryPalette(t.toHexString()));
+
+  splitcomplementPalettes.shift();
+
+  const tetradPalettes = tinycolor(colorInput)
+    .tetrad()
+    .map(t => getPrimaryPalette(t.toHexString()));
+
+  tetradPalettes.shift();
 
   return (
     <div className="App">
@@ -72,48 +102,39 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <Palette
-            title={"Shades"}
-            tinyColors={colorToShades(colorInput)}
+          <PalettesContainer
+            title={"Primary"}
+            palettes={[getPrimaryPalette(colorInput)]}
             onColorClick={setColorInput}
           />
 
-          <Palette
-            title={"Tints"}
-            tinyColors={colorToTints(colorInput)}
-            onColorClick={setColorInput}
-          />
-
-          <Palette
+          <PalettesContainer
             title={"Complement"}
-            tinyColors={[
-              tinycolor(colorInput),
-              tinycolor(colorInput).complement()
-            ]}
+            palettes={[complementPalette]}
             onColorClick={setColorInput}
           />
 
-          <Palette
+          <PalettesContainer
             title={"Triad"}
-            tinyColors={tinycolor(colorInput).triad()}
+            palettes={triadPalettes}
             onColorClick={setColorInput}
           />
 
-          <Palette
+          <PalettesContainer
             title={"Analogous"}
-            tinyColors={tinycolor(colorInput).analogous(3, 12)}
+            palettes={analogousPalettes}
             onColorClick={setColorInput}
           />
 
-          <Palette
+          <PalettesContainer
             title={"Split Complement"}
-            tinyColors={tinycolor(colorInput).splitcomplement()}
+            palettes={splitcomplementPalettes}
             onColorClick={setColorInput}
           />
 
-          <Palette
+          <PalettesContainer
             title={"Tetrad"}
-            tinyColors={tinycolor(colorInput).tetrad()}
+            palettes={tetradPalettes}
             onColorClick={setColorInput}
           />
         </>
