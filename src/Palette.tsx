@@ -1,33 +1,27 @@
 import React from "react";
 
+import ColorPlate from "./ColorPlate";
+
 interface PaletteProps {
   tinyColors: tinycolor.Instance[];
   onColorClick: (color: string) => void;
-  smallColorPlate?: boolean;
+  colorSize?: number;
 }
 
 const Palette: React.FC<PaletteProps> = props => {
-  const { tinyColors, onColorClick, smallColorPlate } = props;
+  const { tinyColors, onColorClick, colorSize } = props;
 
   return (
     <div className="palette">
       {tinyColors.map(t => (
-        <div
-          className="color"
-          style={{
-            background: t.toHexString(),
-            width: smallColorPlate ? 25 : 50,
-            height: smallColorPlate ? 25 : 50
-          }}
-          onClick={() => onColorClick(t.toHexString())}
+        <ColorPlate
+          tinycolor={t}
+          onColorClick={onColorClick}
+          size={colorSize}
         />
       ))}
     </div>
   );
-};
-
-Palette.defaultProps = {
-  smallColorPlate: false
 };
 
 export default Palette;

@@ -7,26 +7,6 @@ import PalettesContainer from "./PalettesContainer";
 import Palette from "./Palette";
 import CopyableText from "./CopyableText";
 
-// const pickerColors = [
-//   tinycolor("#E91E63"),
-//   tinycolor("#FF9800"),
-//   tinycolor("#FFEB3B"),
-//   tinycolor("#8BC34A"),
-//   tinycolor("#51adf6"),
-//   tinycolor("#3F51B5"),
-//   tinycolor("#8259cb")
-// ];
-
-const pickerColors = [
-  tinycolor.random(),
-  tinycolor.random(),
-  tinycolor.random(),
-  tinycolor.random(),
-  tinycolor.random(),
-  tinycolor.random(),
-  tinycolor.random()
-];
-
 const getPrimaryPalette = (colorInput: string): tinycolor.Instance[] => {
   let output = [];
 
@@ -138,7 +118,7 @@ const App: React.FC = () => {
           }}
         >
           <Palette
-            smallColorPlate={true}
+            colorSize={25}
             tinyColors={pickerColors}
             onColorClick={setColorInput}
           />
