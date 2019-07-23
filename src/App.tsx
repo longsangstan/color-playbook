@@ -124,7 +124,6 @@ const App: React.FC = () => {
           />
         </div>
       </div>
-
       {tinycolor(colorInput).isValid() ? (
         <>
           <div className="color-strings-container">
@@ -173,6 +172,11 @@ const App: React.FC = () => {
           />
         </>
       ) : null}
+      <div className="button-bar">
+        <i className="material-icons">cloud</i>
+        <i className="material-icons">favorite</i>
+        <i className="material-icons">attachment</i>
+      </div>
     </div>
   );
 };
