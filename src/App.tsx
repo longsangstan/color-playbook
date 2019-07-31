@@ -1,31 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 
 import tinycolor from "tinycolor2";
+import * as H from "history";
+import { withRouter } from "react-router";
+import queryString from "query-string";
 
 import PalettesContainer from "./PalettesContainer";
 import Palette from "./Palette";
 import CopyableText from "./CopyableText";
 
-const getPrimaryPalette = (colorInput: string): tinycolor.Instance[] => {
-  let output = [];
+import getPrimaryPalette from "./get-primary-palette";
 
-  for (let i = 2; i >= 1; i--) {
-    output.push(tinycolor(colorInput).darken(i * 10));
-  }
+interface AppProps {
+  location: H.Location;
+  history: H.History;
+}
 
-  output.push(tinycolor(colorInput));
+const App: React.FC<AppProps> = props => {
+  const queryParams = queryString.parse(props.location.search);
 
-  for (let i = 1; i <= 2; i++) {
-    output.push(tinycolor(colorInput).lighten(i * 10));
-  }
+  const colorInput =
+    typeof queryParams.input === "string" ? queryParams.input : "";
 
-  return output;
-};
-
-const App: React.FC = () => {
-  const [colorInput, setColorInput] = useState("");
-  const [pickerColors, setPickerColors] = useState([
+  const pickerColors = [
     tinycolor.random(),
     tinycolor.random(),
     tinycolor.random(),
@@ -33,19 +31,13 @@ const App: React.FC = () => {
     tinycolor.random(),
     tinycolor.random(),
     tinycolor.random()
-  ]);
+  ];
 
+  const setColorInput = (input: string) => {
+    props.history.push(`/?input=${input.replace(/#/g, "")}`);
+  };
   const onColorInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColorInput(e.target.value);
-    setPickerColors([
-      tinycolor.random(),
-      tinycolor.random(),
-      tinycolor.random(),
-      tinycolor.random(),
-      tinycolor.random(),
-      tinycolor.random(),
-      tinycolor.random()
-    ]);
   };
 
   /**
@@ -177,4 +169,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default withRouter(App);

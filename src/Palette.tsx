@@ -13,8 +13,9 @@ const Palette: React.FC<PaletteProps> = props => {
 
   return (
     <div className="palette">
-      {tinyColors.map(t => (
+      {tinyColors.map((t, i) => (
         <ColorPlate
+          key={i}
           tinycolor={t}
           onColorClick={onColorClick}
           size={colorSize}
