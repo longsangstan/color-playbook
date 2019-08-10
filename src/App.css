@@ -107,11 +107,18 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon-button-wrapper {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  padding: 8px;
+  border-radius: 100px;
+}
+
+.material-icons {
+  user-select: none;
+}
+
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
 }

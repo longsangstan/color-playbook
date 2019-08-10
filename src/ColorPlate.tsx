@@ -11,7 +11,7 @@ const ColorPlate: React.FC<ColorPlateProps> = props => {
 
   return (
     <div
-      className="color"
+      className="color animated bounceIn"
       style={{
         background: tinycolor.toHexString(),
         width: size,

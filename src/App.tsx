@@ -9,6 +9,7 @@ import queryString from "query-string";
 import PalettesContainer from "./PalettesContainer";
 import Palette from "./Palette";
 import CopyableText from "./CopyableText";
+import IconButton from "./IconButton";
 
 import getPrimaryPalette from "./get-primary-palette";
 
@@ -165,9 +166,15 @@ const App: React.FC<AppProps> = props => {
         </>
       ) : null}
       <div className="button-bar">
-        <i className="material-icons">cloud</i>
-        <i className="material-icons">favorite</i>
-        <i className="material-icons">attachment</i>
+        <IconButton
+          iconName="colorize"
+          isActive={false}
+          onClick={() => console.log("xx")}
+        />
+
+        <IconButton iconName="color_lens" isActive={false} />
+
+        <IconButton iconName="help_outline" isActive={false} />
       </div>
     </div>
   );
