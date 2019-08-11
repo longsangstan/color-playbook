@@ -29,7 +29,7 @@ const App: React.FC<AppProps> = props => {
     typeof queryParams.input === "string" ? queryParams.input : "";
 
   const setColorInput = (input: string) => {
-    history.push(`/picker/?input=${input.replace(/#/g, "")}`);
+    history.push(`/picker?input=${input.replace(/#/g, "")}`);
   };
 
   return (
@@ -52,20 +52,20 @@ const App: React.FC<AppProps> = props => {
       <div className="button-bar">
         <IconButton
           iconName="colorize"
-          isActive={false}
-          onClick={() => history.push("/picker")}
+          isActive={location.pathname.includes("/picker")}
+          onClick={() => history.push("picker")}
         />
 
         <IconButton
           iconName="color_lens"
-          isActive={false}
-          onClick={() => history.push("/palette")}
+          isActive={location.pathname.includes("/palette")}
+          onClick={() => history.push("palette")}
         />
 
         <IconButton
           iconName="help_outline"
-          isActive={false}
-          onClick={() => history.push("/help")}
+          isActive={location.pathname.includes("/help")}
+          onClick={() => history.push("help")}
         />
       </div>
     </div>
