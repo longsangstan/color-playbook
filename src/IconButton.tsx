@@ -3,7 +3,7 @@ import React from "react";
 interface IconButtonProps {
   iconName: string;
   isActive: boolean;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const IconButton: React.FC<IconButtonProps> = props => {
@@ -11,10 +11,9 @@ const IconButton: React.FC<IconButtonProps> = props => {
 
   return (
     <div
-      className="icon-button-wrapper animated bounceIn"
-      style={{
-        background: isActive ? "#E0E0E0" : "transparent"
-      }}
+      className={`icon-button-wrapper animated bounceIn ${
+        isActive ? "is-active" : ""
+      }`}
       onClick={onClick}
     >
       <i className="material-icons md-dark">{iconName}</i>
