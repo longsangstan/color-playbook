@@ -3,7 +3,7 @@ import React from "react";
 interface ColorPlateProps {
   size?: number;
   tinycolor: tinycolor.Instance;
-  onColorClick: (color: string) => void;
+  onColorClick?: (color: string) => void;
 }
 
 const ColorPlate: React.FC<ColorPlateProps> = props => {
@@ -17,7 +17,9 @@ const ColorPlate: React.FC<ColorPlateProps> = props => {
         width: size,
         height: size
       }}
-      onClick={() => onColorClick(tinycolor.toHexString())}
+      onClick={() =>
+        onColorClick ? onColorClick(tinycolor.toHexString()) : null
+      }
     />
   );
 };

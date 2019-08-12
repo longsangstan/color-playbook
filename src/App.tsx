@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import * as H from "history";
@@ -12,8 +12,10 @@ import { withRouter } from "react-router";
 import queryString from "query-string";
 
 import PickerPage from "./PickerPage";
-
 import IconButton from "./IconButton";
+
+import tinycolor from "tinycolor2";
+import ColorPlate from "./ColorPlate";
 
 interface AppProps {
   location: H.Location;
@@ -32,6 +34,17 @@ const App: React.FC<AppProps> = props => {
     history.push(`/picker?input=${input.replace(/#/g, "")}`);
   };
 
+  const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
+
+  const handlePaletteButtonClicked = () => {
+    if (location.pathname.includes("/palette")) {
+      setIsPaletteBarOpen(!isPaletteBarOpen);
+    } else {
+      history.push("palette");
+      setIsPaletteBarOpen(true);
+    }
+  };
+
   return (
     <div className="App">
       <Switch>
@@ -42,7 +55,36 @@ const App: React.FC<AppProps> = props => {
           )}
         />
 
-        <Route path="/palette" render={() => <h1>Palette</h1>} />
+        <Route
+          path="/palette"
+          render={() => (
+            <div>
+              <h1>Palette</h1>
+              <div
+                className={`palette-bar animated ${
+                  isPaletteBarOpen ? "zoomIn" : "zoomOut"
+                }`}
+                // style={{ display: isPaletteBarOpen ? "" : "none" }}
+              >
+                <div className="palette-bar-row">
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                </div>
+                <div className="palette-bar-divider" />
+                <div className="palette-bar-row">
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
+                </div>
+              </div>
+            </div>
+          )}
+        />
 
         <Route path="/help" render={() => <h1>Help</h1>} />
 
@@ -59,7 +101,7 @@ const App: React.FC<AppProps> = props => {
         <IconButton
           iconName="color_lens"
           isActive={location.pathname.includes("/palette")}
-          onClick={() => history.push("palette")}
+          onClick={() => handlePaletteButtonClicked()}
         />
 
         <IconButton
