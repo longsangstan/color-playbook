@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 import * as H from "history";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import queryString from "query-string";
 
@@ -17,10 +12,29 @@ import IconButton from "./IconButton";
 import tinycolor from "tinycolor2";
 import ColorPlate from "./ColorPlate";
 
+import posed from "react-pose";
+
 interface AppProps {
   location: H.Location;
   history: H.History;
 }
+
+const PaletteBar = posed.div({
+  visible: {
+    applyAtStart: { display: "" },
+    y: 0
+  },
+  hidden: {
+    applyAtEnd: { display: "none" },
+    y: 300
+  }
+});
+
+const IconButtonWrapper = posed.div({
+  pressable: true,
+  init: { scale: 1 },
+  press: { scale: 0.8 }
+});
 
 const App: React.FC<AppProps> = props => {
   const { location, history } = props;
@@ -60,28 +74,6 @@ const App: React.FC<AppProps> = props => {
           render={() => (
             <div>
               <h1>Palette</h1>
-              <div
-                className={`palette-bar animated ${
-                  isPaletteBarOpen ? "zoomIn" : "zoomOut"
-                }`}
-                // style={{ display: isPaletteBarOpen ? "" : "none" }}
-              >
-                <div className="palette-bar-row">
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                </div>
-                <div className="palette-bar-divider" />
-                <div className="palette-bar-row">
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                  <ColorPlate size={40} tinycolor={tinycolor.random()} />
-                </div>
-              </div>
             </div>
           )}
         />
@@ -91,24 +83,55 @@ const App: React.FC<AppProps> = props => {
         <Route render={() => <Redirect to="/picker" />} />
       </Switch>
 
+      <PaletteBar
+        className={`palette-bar`}
+        pose={
+          isPaletteBarOpen && location.pathname.includes("/palette")
+            ? "visible"
+            : "hidden"
+        }
+      >
+        <div className="palette-bar-row">
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+        </div>
+        <div className="palette-bar-divider" />
+        <div className="palette-bar-row">
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+        </div>
+      </PaletteBar>
+
       <div className="button-bar">
-        <IconButton
-          iconName="colorize"
-          isActive={location.pathname.includes("/picker")}
-          onClick={() => history.push("picker")}
-        />
+        <IconButtonWrapper>
+          <IconButton
+            iconName="colorize"
+            isActive={location.pathname.includes("/picker")}
+            onClick={() => history.push("picker")}
+          />
+        </IconButtonWrapper>
 
-        <IconButton
-          iconName="color_lens"
-          isActive={location.pathname.includes("/palette")}
-          onClick={() => handlePaletteButtonClicked()}
-        />
+        <IconButtonWrapper>
+          <IconButton
+            iconName="color_lens"
+            isActive={location.pathname.includes("/palette")}
+            onClick={() => handlePaletteButtonClicked()}
+          />
+        </IconButtonWrapper>
 
-        <IconButton
-          iconName="help_outline"
-          isActive={location.pathname.includes("/help")}
-          onClick={() => history.push("help")}
-        />
+        <IconButtonWrapper>
+          <IconButton
+            iconName="help_outline"
+            isActive={location.pathname.includes("/help")}
+            onClick={() => history.push("help")}
+          />
+        </IconButtonWrapper>
       </div>
     </div>
   );
