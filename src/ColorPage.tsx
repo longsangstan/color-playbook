@@ -7,12 +7,12 @@ import CopyableText from "./CopyableText";
 
 import getPrimaryPalette from "./get-primary-palette";
 
-interface PickerPageProps {
+interface ColorPageProps {
   colorInput: string;
   setColorInput: (input: string) => void;
 }
 
-const PickerPage: React.FC<PickerPageProps> = props => {
+const ColorPage: React.FC<ColorPageProps> = props => {
   const { colorInput, setColorInput } = props;
 
   const onColorInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -157,4 +157,4 @@ const PickerPage: React.FC<PickerPageProps> = props => {
   );
 };
 
-export default PickerPage;
+export default ColorPage;

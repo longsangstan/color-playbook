@@ -6,7 +6,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import queryString from "query-string";
 
-import PickerPage from "./PickerPage";
+import ColorPage from "./ColorPage";
 import IconButton from "./IconButton";
 
 import tinycolor from "tinycolor2";
@@ -39,7 +39,7 @@ const App: React.FC<AppProps> = props => {
     typeof queryParams.input === "string" ? queryParams.input : "";
 
   const setColorInput = (input: string) => {
-    history.push(`/picker?input=${input.replace(/#/g, "")}`);
+    history.push(`/color?input=${input.replace(/#/g, "")}`);
   };
 
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
@@ -57,9 +57,9 @@ const App: React.FC<AppProps> = props => {
     <div className="App">
       <Switch>
         <Route
-          path="/picker"
+          path="/color"
           render={() => (
-            <PickerPage colorInput={colorInput} setColorInput={setColorInput} />
+            <ColorPage colorInput={colorInput} setColorInput={setColorInput} />
           )}
         />
 
@@ -74,7 +74,7 @@ const App: React.FC<AppProps> = props => {
 
         <Route path="/help" render={() => <h1>Help</h1>} />
 
-        <Route render={() => <Redirect to="/picker" />} />
+        <Route render={() => <Redirect to="/color" />} />
       </Switch>
 
       <PaletteBar
@@ -104,9 +104,9 @@ const App: React.FC<AppProps> = props => {
 
       <div className="button-bar">
         <IconButton
-          iconName="colorize"
-          isActive={location.pathname.includes("/picker")}
-          onClick={() => history.push("picker")}
+          iconName="invert_colors"
+          isActive={location.pathname.includes("/color")}
+          onClick={() => history.push("color")}
         />
 
         <IconButton
