@@ -30,12 +30,6 @@ const PaletteBar = posed.div({
   }
 });
 
-const IconButtonWrapper = posed.div({
-  pressable: true,
-  init: { scale: 1 },
-  press: { scale: 0.8 }
-});
-
 const App: React.FC<AppProps> = props => {
   const { location, history } = props;
 
@@ -109,29 +103,23 @@ const App: React.FC<AppProps> = props => {
       </PaletteBar>
 
       <div className="button-bar">
-        <IconButtonWrapper>
-          <IconButton
-            iconName="colorize"
-            isActive={location.pathname.includes("/picker")}
-            onClick={() => history.push("picker")}
-          />
-        </IconButtonWrapper>
+        <IconButton
+          iconName="colorize"
+          isActive={location.pathname.includes("/picker")}
+          onClick={() => history.push("picker")}
+        />
 
-        <IconButtonWrapper>
-          <IconButton
-            iconName="color_lens"
-            isActive={location.pathname.includes("/palette")}
-            onClick={() => handlePaletteButtonClicked()}
-          />
-        </IconButtonWrapper>
+        <IconButton
+          iconName="color_lens"
+          isActive={location.pathname.includes("/palette")}
+          onClick={() => handlePaletteButtonClicked()}
+        />
 
-        <IconButtonWrapper>
-          <IconButton
-            iconName="help_outline"
-            isActive={location.pathname.includes("/help")}
-            onClick={() => history.push("help")}
-          />
-        </IconButtonWrapper>
+        <IconButton
+          iconName="help_outline"
+          isActive={location.pathname.includes("/help")}
+          onClick={() => history.push("help")}
+        />
       </div>
     </div>
   );
