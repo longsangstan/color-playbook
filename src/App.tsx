@@ -112,6 +112,7 @@ const App: React.FC<AppProps> = props => {
         <IconButton
           iconName="color_lens"
           isActive={location.pathname.includes("/palette")}
+          isOutline={isPaletteBarOpen}
           onClick={() => handlePaletteButtonClicked()}
         />
 
