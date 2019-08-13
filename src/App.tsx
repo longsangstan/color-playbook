@@ -6,6 +6,8 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import queryString from "query-string";
 
+import { ChromePicker } from "react-color";
+
 import ColorPage from "./ColorPage";
 import IconButton from "./IconButton";
 
@@ -26,7 +28,7 @@ const PaletteBar = posed.div({
   },
   hidden: {
     applyAtEnd: { display: "none" },
-    y: 300
+    y: 600
   }
 });
 
@@ -93,13 +95,7 @@ const App: React.FC<AppProps> = props => {
           <ColorPlate size={40} tinycolor={tinycolor.random()} />
         </div>
         <div className="palette-bar-divider" />
-        <div className="palette-bar-row">
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-        </div>
+        <ChromePicker disableAlpha={true} />
       </PaletteBar>
 
       <div className="button-bar">

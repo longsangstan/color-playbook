@@ -118,7 +118,7 @@
   align-items: center;
   justify-content: center;
   background: white;
-  height: 150px;
+  height: 340px;
   width: 300px;
   left: 50%;
   margin-left: -150px;
@@ -139,4 +139,10 @@
   width: 260px;
   margin: 10px;
   border-radius: 100px;
+}
+
+.chrome-picker {
+  width: 260px !important;
+  box-shadow: none !important;
+  font-family: "Montserrat", sans-serif !important;
 }
