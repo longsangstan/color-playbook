@@ -4,7 +4,7 @@ import posed from "react-pose";
 interface IconButtonProps {
   iconName: string;
   isActive: boolean;
-  isOutline?: boolean;
+  filled?: boolean;
   onClick: () => void;
 }
 const Wrapper = posed.div({
@@ -13,12 +13,15 @@ const Wrapper = posed.div({
   press: { scale: 0.8 }
 });
 
-const IconButton: React.FC<IconButtonProps> = props => {
-  const { iconName, isActive, isOutline, onClick } = props;
-
+const IconButton: React.FC<IconButtonProps> = ({
+  iconName,
+  isActive = false,
+  filled = false,
+  onClick
+}) => {
   const className = ["icon-button-wrapper", "animated", "bounceIn"];
   if (isActive) {
-    if (isOutline) {
+    if (filled) {
       className.push("highlighted-outline");
     } else {
       className.push("highlighted");
@@ -32,11 +35,6 @@ const IconButton: React.FC<IconButtonProps> = props => {
       </div>
     </Wrapper>
   );
-};
-
-IconButton.defaultProps = {
-  isActive: false,
-  isOutline: false
 };
 
 export default IconButton;

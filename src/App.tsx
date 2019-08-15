@@ -89,6 +89,7 @@ const App: React.FC<AppProps> = props => {
       >
         <div className="palette-bar-row">
           <ColorPlate
+            filled={false}
             size={40}
             tinycolor={tinycolor.random()}
             onColorClick={() => null}
@@ -128,7 +129,7 @@ const App: React.FC<AppProps> = props => {
         <IconButton
           iconName="color_lens"
           isActive={location.pathname.includes("/palette")}
-          isOutline={isPaletteBarOpen}
+          filled={isPaletteBarOpen}
           onClick={() => handlePaletteButtonClicked()}
         />
 

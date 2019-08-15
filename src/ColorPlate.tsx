@@ -1,29 +1,30 @@
 import React from "react";
 
 interface ColorPlateProps {
-  size?: number;
+  filled?: boolean;
+  size: number;
   tinycolor: tinycolor.Instance;
   onColorClick: (color: string) => void;
 }
 
-const ColorPlate: React.FC<ColorPlateProps> = props => {
-  const { size, tinycolor, onColorClick } = props;
-
+const ColorPlate: React.FC<ColorPlateProps> = ({
+  filled = true,
+  size,
+  tinycolor,
+  onColorClick
+}) => {
   return (
     <div
       className="color animated bounceIn"
       style={{
-        background: tinycolor.toHexString(),
-        width: size,
-        height: size
+        borderColor: tinycolor.toHexString(),
+        background: filled ? tinycolor.toHexString() : "#fff",
+        width: size - 4,
+        height: size - 4
       }}
       onClick={() => onColorClick(tinycolor.toHexString())}
     />
   );
-};
-
-ColorPlate.defaultProps = {
-  size: 50
 };
 
 export default ColorPlate;
