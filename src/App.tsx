@@ -88,11 +88,31 @@ const App: React.FC<AppProps> = props => {
         }
       >
         <div className="palette-bar-row">
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
-          <ColorPlate size={40} tinycolor={tinycolor.random()} />
+          <ColorPlate
+            size={40}
+            tinycolor={tinycolor.random()}
+            onColorClick={() => null}
+          />
+          <ColorPlate
+            size={40}
+            tinycolor={tinycolor.random()}
+            onColorClick={() => null}
+          />
+          <ColorPlate
+            size={40}
+            tinycolor={tinycolor.random()}
+            onColorClick={() => null}
+          />
+          <ColorPlate
+            size={40}
+            tinycolor={tinycolor.random()}
+            onColorClick={() => null}
+          />
+          <ColorPlate
+            size={40}
+            tinycolor={tinycolor.random()}
+            onColorClick={() => null}
+          />
         </div>
         <div className="palette-bar-divider" />
         <ChromePicker disableAlpha={true} />
