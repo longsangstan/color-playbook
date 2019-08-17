@@ -15,6 +15,7 @@ import IconButton from "./IconButton";
 import PaletteBar from "./PaletteBar";
 
 import getRandomPalatte from "./get-random-palette";
+import { ColorResult } from "react-color";
 
 interface AppProps {
   location: H.Location;
@@ -55,6 +56,14 @@ const App: React.FC<AppProps> = props => {
     }
   };
 
+  const handlePickerColorChange = (color: ColorResult) => {
+    setPaletteBarInput(paletteBarInput => {
+      let newInput = [...paletteBarInput];
+      newInput[activeColorKey] = tinycolor(color.hex);
+      return newInput;
+    });
+  };
+
   return (
     <div className="App">
       <Switch>
@@ -83,6 +92,7 @@ const App: React.FC<AppProps> = props => {
         colors={paletteBarInput}
         activeColorKey={activeColorKey}
         handleColorClick={setActiveColorKey}
+        handlePickerColorChange={handlePickerColorChange}
         isVisible={isPaletteBarOpen && pathname.includes("/palette")}
       />
 

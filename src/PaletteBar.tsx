@@ -1,7 +1,7 @@
 import React from "react";
 
 import posed from "react-pose";
-import { ChromePicker } from "react-color";
+import { ChromePicker, ColorResult } from "react-color";
 import tinycolor from "tinycolor2";
 
 import ColorPlate from "./ColorPlate";
@@ -22,13 +22,15 @@ interface PaletteBarProps {
   colors: tinycolor.Instance[];
   activeColorKey: number;
   handleColorClick: (key: number) => void;
+  handlePickerColorChange: (color: ColorResult) => void;
 }
 
 const PaletteBar: React.FC<PaletteBarProps> = ({
   isVisible,
   colors,
   activeColorKey,
-  handleColorClick
+  handleColorClick,
+  handlePickerColorChange
 }) => {
   return (
     <Wrapper className={`palette-bar`} pose={isVisible ? "visible" : "hidden"}>
@@ -44,7 +46,11 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
         ))}
       </div>
       <div className="palette-bar-divider" />
-      <ChromePicker disableAlpha={true} />
+      <ChromePicker
+        disableAlpha={true}
+        color={colors[activeColorKey].toHexString()}
+        onChange={handlePickerColorChange}
+      />
     </Wrapper>
   );
 };
