@@ -19,38 +19,29 @@ const Wrapper = posed.div({
 
 interface PaletteBarProps {
   isVisible: boolean;
+  colors: tinycolor.Instance[];
+  activeColorKey: number;
+  handleColorClick: (key: number) => void;
 }
 
-const PaletteBar: React.FC<PaletteBarProps> = ({ isVisible }) => {
+const PaletteBar: React.FC<PaletteBarProps> = ({
+  isVisible,
+  colors,
+  activeColorKey,
+  handleColorClick
+}) => {
   return (
     <Wrapper className={`palette-bar`} pose={isVisible ? "visible" : "hidden"}>
       <div className="palette-bar-row">
-        <ColorPlate
-          filled={false}
-          size={40}
-          tinycolor={tinycolor.random()}
-          onColorClick={() => null}
-        />
-        <ColorPlate
-          size={40}
-          tinycolor={tinycolor.random()}
-          onColorClick={() => null}
-        />
-        <ColorPlate
-          size={40}
-          tinycolor={tinycolor.random()}
-          onColorClick={() => null}
-        />
-        <ColorPlate
-          size={40}
-          tinycolor={tinycolor.random()}
-          onColorClick={() => null}
-        />
-        <ColorPlate
-          size={40}
-          tinycolor={tinycolor.random()}
-          onColorClick={() => null}
-        />
+        {colors.map((item, index) => (
+          <ColorPlate
+            key={index}
+            filled={index !== activeColorKey}
+            size={40}
+            tinycolor={item}
+            onColorClick={() => handleColorClick(index)}
+          />
+        ))}
       </div>
       <div className="palette-bar-divider" />
       <ChromePicker disableAlpha={true} />

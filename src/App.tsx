@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 
+import tinycolor from "tinycolor2";
+
 import * as H from "history";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -11,6 +13,8 @@ import ColorPage from "./ColorPage";
 import IconButton from "./IconButton";
 
 import PaletteBar from "./PaletteBar";
+
+import getRandomPalatte from "./get-random-palette";
 
 interface AppProps {
   location: H.Location;
@@ -38,6 +42,8 @@ const App: React.FC<AppProps> = props => {
    * Palette Page
    */
 
+  const [paletteBarInput, setPaletteBarInput] = useState(getRandomPalatte(5));
+  const [activeColorKey, setActiveColorKey] = useState(0);
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
 
   const handlePaletteButtonClicked = () => {
@@ -74,6 +80,9 @@ const App: React.FC<AppProps> = props => {
       </Switch>
 
       <PaletteBar
+        colors={paletteBarInput}
+        activeColorKey={activeColorKey}
+        handleColorClick={setActiveColorKey}
         isVisible={isPaletteBarOpen && pathname.includes("/palette")}
       />
 
