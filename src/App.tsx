@@ -19,6 +19,7 @@ interface AppProps {
 
 const App: React.FC<AppProps> = props => {
   const { location, history } = props;
+  const { pathname } = location;
 
   const queryParams = queryString.parse(location.search);
 
@@ -40,7 +41,7 @@ const App: React.FC<AppProps> = props => {
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
 
   const handlePaletteButtonClicked = () => {
-    if (location.pathname.includes("/palette")) {
+    if (pathname.includes("/palette")) {
       setIsPaletteBarOpen(!isPaletteBarOpen);
     } else {
       history.push("palette");
@@ -73,26 +74,26 @@ const App: React.FC<AppProps> = props => {
       </Switch>
 
       <PaletteBar
-        isVisible={isPaletteBarOpen && location.pathname.includes("/palette")}
+        isVisible={isPaletteBarOpen && pathname.includes("/palette")}
       />
 
       <div className="button-bar">
         <IconButton
           iconName="invert_colors"
-          isActive={location.pathname.includes("/color")}
+          isActive={pathname.includes("/color")}
           onClick={() => history.push("color")}
         />
 
         <IconButton
           iconName="color_lens"
-          isActive={location.pathname.includes("/palette")}
+          isActive={pathname.includes("/palette")}
           filled={isPaletteBarOpen}
           onClick={() => handlePaletteButtonClicked()}
         />
 
         <IconButton
           iconName="help_outline"
-          isActive={location.pathname.includes("/help")}
+          isActive={pathname.includes("/help")}
           onClick={() => history.push("help")}
         />
       </div>
