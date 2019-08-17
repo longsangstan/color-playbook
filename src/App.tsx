@@ -14,8 +14,11 @@ import IconButton from "./IconButton";
 
 import PaletteBar from "./PaletteBar";
 
-import getRandomPalatte from "./get-random-palette";
 import { ColorResult } from "react-color";
+import { DropResult } from "react-beautiful-dnd";
+
+import reorder from "./reorder";
+import getRandomPalatte from "./get-random-palette";
 
 interface AppProps {
   location: H.Location;
@@ -64,6 +67,34 @@ const App: React.FC<AppProps> = props => {
     });
   };
 
+  const handleDragEnd = (result: DropResult) => {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    let newPaletteBarInput = reorder(
+      paletteBarInput,
+      result.source.index,
+      result.destination.index
+    );
+    setPaletteBarInput(newPaletteBarInput);
+
+    if (result.source.index === activeColorKey) {
+      setActiveColorKey(result.destination.index);
+    } else if (
+      result.source.index > activeColorKey &&
+      result.destination.index <= activeColorKey
+    ) {
+      setActiveColorKey(activeColorKey + 1);
+    } else if (
+      result.source.index < activeColorKey &&
+      result.destination.index >= activeColorKey
+    ) {
+      setActiveColorKey(activeColorKey - 1);
+    }
+  };
+
   return (
     <div className="App">
       <Switch>
@@ -85,7 +116,7 @@ const App: React.FC<AppProps> = props => {
 
         <Route path="/help" render={() => <h1>Help</h1>} />
 
-        <Route render={() => <Redirect to="/color" />} />
+        <Route render={() => <Redirect to="/palette" />} />
       </Switch>
 
       <PaletteBar
@@ -93,6 +124,7 @@ const App: React.FC<AppProps> = props => {
         activeColorKey={activeColorKey}
         handleColorClick={setActiveColorKey}
         handlePickerColorChange={handlePickerColorChange}
+        handleDragEnd={handleDragEnd}
         isVisible={isPaletteBarOpen && pathname.includes("/palette")}
       />
 

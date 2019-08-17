@@ -2,6 +2,13 @@ import React from "react";
 
 import posed from "react-pose";
 import { ChromePicker, ColorResult } from "react-color";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult
+} from "react-beautiful-dnd";
+
 import tinycolor from "tinycolor2";
 
 import ColorPlate from "./ColorPlate";
@@ -23,6 +30,7 @@ interface PaletteBarProps {
   activeColorKey: number;
   handleColorClick: (key: number) => void;
   handlePickerColorChange: (color: ColorResult) => void;
+  handleDragEnd: (result: DropResult) => void;
 }
 
 const PaletteBar: React.FC<PaletteBarProps> = ({
@@ -30,21 +38,48 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
   colors,
   activeColorKey,
   handleColorClick,
-  handlePickerColorChange
+  handlePickerColorChange,
+  handleDragEnd
 }) => {
   return (
     <Wrapper className={`palette-bar`} pose={isVisible ? "visible" : "hidden"}>
-      <div className="palette-bar-row">
-        {colors.map((item, index) => (
-          <ColorPlate
-            key={index}
-            filled={index !== activeColorKey}
-            size={40}
-            tinycolor={item}
-            onColorClick={() => handleColorClick(index)}
-          />
-        ))}
-      </div>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId="droppable" direction="horizontal">
+          {provided => (
+            <div
+              ref={provided.innerRef}
+              className="palette-bar-row"
+              {...provided.droppableProps}
+            >
+              {colors.map((item, index) => (
+                <Draggable
+                  key={index}
+                  draggableId={index.toString()}
+                  index={index}
+                >
+                  {provided => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <ColorPlate
+                        key={index}
+                        filled={index !== activeColorKey}
+                        size={40}
+                        tinycolor={item}
+                        onColorClick={() => handleColorClick(index)}
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+
       <div className="palette-bar-divider" />
       <ChromePicker
         disableAlpha={true}
