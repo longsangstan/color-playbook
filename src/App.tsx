@@ -18,7 +18,7 @@ import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
 
 import reorder from "./reorder";
-import getRandomPalatte from "./get-random-palette";
+import getPaletteFromQueryParams from "./get-palette-from-query-params";
 
 interface AppProps {
   location: H.Location;
@@ -46,7 +46,9 @@ const App: React.FC<AppProps> = props => {
    * Palette Page
    */
 
-  const [paletteBarInput, setPaletteBarInput] = useState(getRandomPalatte(5));
+  const [paletteBarInput, setPaletteBarInput] = useState(
+    getPaletteFromQueryParams(queryParams)
+  );
   const [activeColorKey, setActiveColorKey] = useState(0);
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
 
