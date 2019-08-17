@@ -6,36 +6,25 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { withRouter } from "react-router";
 import queryString from "query-string";
 
-import { ChromePicker } from "react-color";
-
 import ColorPage from "./ColorPage";
+
 import IconButton from "./IconButton";
 
-import tinycolor from "tinycolor2";
-import ColorPlate from "./ColorPlate";
-
-import posed from "react-pose";
+import PaletteBar from "./PaletteBar";
 
 interface AppProps {
   location: H.Location;
   history: H.History;
 }
 
-const PaletteBar = posed.div({
-  visible: {
-    applyAtStart: { display: "" },
-    y: 0
-  },
-  hidden: {
-    applyAtEnd: { display: "none" },
-    y: 600
-  }
-});
-
 const App: React.FC<AppProps> = props => {
   const { location, history } = props;
 
   const queryParams = queryString.parse(location.search);
+
+  /**
+   * Color Page
+   */
 
   const colorInput =
     typeof queryParams.input === "string" ? queryParams.input : "";
@@ -43,6 +32,10 @@ const App: React.FC<AppProps> = props => {
   const setColorInput = (input: string) => {
     history.push(`/color?input=${input.replace(/#/g, "")}`);
   };
+
+  /**
+   * Palette Page
+   */
 
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
 
@@ -80,44 +73,8 @@ const App: React.FC<AppProps> = props => {
       </Switch>
 
       <PaletteBar
-        className={`palette-bar`}
-        pose={
-          isPaletteBarOpen && location.pathname.includes("/palette")
-            ? "visible"
-            : "hidden"
-        }
-      >
-        <div className="palette-bar-row">
-          <ColorPlate
-            filled={false}
-            size={40}
-            tinycolor={tinycolor.random()}
-            onColorClick={() => null}
-          />
-          <ColorPlate
-            size={40}
-            tinycolor={tinycolor.random()}
-            onColorClick={() => null}
-          />
-          <ColorPlate
-            size={40}
-            tinycolor={tinycolor.random()}
-            onColorClick={() => null}
-          />
-          <ColorPlate
-            size={40}
-            tinycolor={tinycolor.random()}
-            onColorClick={() => null}
-          />
-          <ColorPlate
-            size={40}
-            tinycolor={tinycolor.random()}
-            onColorClick={() => null}
-          />
-        </div>
-        <div className="palette-bar-divider" />
-        <ChromePicker disableAlpha={true} />
-      </PaletteBar>
+        isVisible={isPaletteBarOpen && location.pathname.includes("/palette")}
+      />
 
       <div className="button-bar">
         <IconButton
