@@ -9,6 +9,7 @@ import { withRouter } from "react-router";
 import queryString from "query-string";
 
 import ColorPage from "./ColorPage";
+import PalettePage from "./PalettePage";
 
 import IconButton from "./IconButton";
 
@@ -109,11 +110,7 @@ const App: React.FC<AppProps> = props => {
 
         <Route
           path="/palette"
-          render={() => (
-            <div>
-              <h1>Palette</h1>
-            </div>
-          )}
+          render={() => <PalettePage colors={paletteBarInput} />}
         />
 
         <Route path="/help" render={() => <h1>Help</h1>} />
