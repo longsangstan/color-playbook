@@ -1,6 +1,7 @@
 import React from "react";
 
-import Example from "./illustrations/Example";
+import Pattern from "./illustrations/Pattern";
+import Gradients from "./illustrations/Gradients";
 
 interface PalettePageProps {
   colors: tinycolor.Instance[];
@@ -9,9 +10,12 @@ interface PalettePageProps {
 const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
   return (
     <div className="palette-page">
-      <h1>Illustration</h1>
-      <div style={{ height: 300, width: 300 }}>
-        <Example colors={colors} />
+      <h1>Illustrations</h1>
+      <div style={{ height: 350, width: 350 }}>
+        <Pattern colors={colors} />
+      </div>
+      <div style={{ margin: 10 }}>
+        <Gradients colors={colors} />
       </div>
     </div>
   );

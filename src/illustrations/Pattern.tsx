@@ -5,7 +5,7 @@ interface PalettePageProps {
 }
 
 const SvgComponent: React.FC<PalettePageProps> = ({ colors }) => (
-  <svg className="graphic" width={"100%"} height={"100%"}>
+  <svg className="with-shadow" width={"100%"} height={"100%"}>
     <pattern
       width={250}
       height={250}
