@@ -14,6 +14,7 @@ const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
       <div style={{ height: 350, width: 350 }}>
         <Pattern colors={colors} />
       </div>
+
       <div style={{ margin: 10 }}>
         <Gradients colors={colors} />
       </div>

@@ -10,6 +10,7 @@ import queryString from "query-string";
 
 import ColorPage from "./ColorPage";
 import PalettePage from "./PalettePage";
+import AboutPage from "./AboutPage";
 
 import IconButton from "./IconButton";
 
@@ -113,7 +114,7 @@ const App: React.FC<AppProps> = props => {
           render={() => <PalettePage colors={paletteBarInput} />}
         />
 
-        <Route path="/help" render={() => <h1>Help</h1>} />
+        <Route path="/about" render={() => <AboutPage />} />
 
         <Route render={() => <Redirect to="/palette" />} />
       </Switch>
@@ -143,8 +144,8 @@ const App: React.FC<AppProps> = props => {
 
         <IconButton
           iconName="help_outline"
-          isActive={pathname.includes("/help")}
-          onClick={() => history.push("help")}
+          isActive={pathname.includes("/about")}
+          onClick={() => history.push("about")}
         />
       </div>
     </div>
