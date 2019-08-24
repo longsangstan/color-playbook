@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 
+import ReactGA from "react-ga";
+
 import tinycolor from "tinycolor2";
 
 import * as H from "history";
@@ -27,11 +29,21 @@ interface AppProps {
   history: H.History;
 }
 
+ReactGA.initialize("UA-118263436-4", {
+  debug: false
+});
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 const App: React.FC<AppProps> = props => {
   const { location, history } = props;
-  const { pathname } = location;
+  const { pathname, search } = location;
 
-  const queryParams = queryString.parse(location.search);
+  const queryParams = queryString.parse(search);
+
+  const pushPath = (path: string) => {
+    ReactGA.pageview(path);
+    history.push(path);
+  };
 
   /**
    * Color Page
@@ -58,7 +70,7 @@ const App: React.FC<AppProps> = props => {
     if (pathname.includes("/palette")) {
       setIsPaletteBarOpen(!isPaletteBarOpen);
     } else {
-      history.push("palette");
+      pushPath("/palette");
       setIsPaletteBarOpen(true);
     }
   };
@@ -132,7 +144,7 @@ const App: React.FC<AppProps> = props => {
         <IconButton
           iconName="invert_colors"
           isActive={pathname.includes("/color")}
-          onClick={() => history.push("color")}
+          onClick={() => pushPath("/color")}
         />
 
         <IconButton
@@ -145,7 +157,7 @@ const App: React.FC<AppProps> = props => {
         <IconButton
           iconName="help_outline"
           isActive={pathname.includes("/about")}
-          onClick={() => history.push("about")}
+          onClick={() => pushPath("/about")}
         />
       </div>
     </div>

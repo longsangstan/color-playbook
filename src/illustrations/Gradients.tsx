@@ -23,6 +23,7 @@ const Gradients: React.FC<GradientsProps> = ({ colors }) => {
         }
         return (
           <div
+            key={index}
             className="with-shadow"
             style={{
               margin: 8,
