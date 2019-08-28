@@ -191,3 +191,20 @@ a {
   word-wrap: break-word;
   padding: 0px 14px 36px;
 }
+
+/*
+  palette page
+*/
+
+.illustrations-dropdown {
+  text-align: left;
+  font-weight: bold;
+}
+
+.illustrations-dropdown__control {
+  border-radius: 10px !important;
+}
+
+.illustrations-dropdown__control--is-focused {
+  border-radius: 10px !important;
+}

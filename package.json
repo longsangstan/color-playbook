@@ -20,6 +20,7 @@
     "react-pose": "^4.0.8",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-select": "^3.0.4",
     "tinycolor2": "^1.4.1",
     "typescript": "3.5.2"
   },
