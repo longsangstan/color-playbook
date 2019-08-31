@@ -32,7 +32,7 @@ const groupedOptions = [
 ];
 
 const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
-  const [selectedOption, setSelectedOption] = useState(graphicsOptions[0]);
+  const [selectedOption, setSelectedOption] = useState(graphicsOptions[1]);
 
   const renderIllustration = () => {
     if (selectedOption.value === "pattern") {
@@ -45,7 +45,7 @@ const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
 
     if (selectedOption.value === "gradient") {
       return (
-        <div style={{ margin: 10 }}>
+        <div>
           <Gradients colors={colors} />
         </div>
       );

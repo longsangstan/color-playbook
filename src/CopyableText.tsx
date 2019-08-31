@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 interface CopyableTextProps {
   text: string;
+  fontSize?: number;
 }
 
 const copyMessage = (val: string) => {
@@ -18,9 +19,7 @@ const copyMessage = (val: string) => {
   document.body.removeChild(selBox);
 };
 
-const CopyableText: React.FC<CopyableTextProps> = props => {
-  const { text } = props;
-
+const CopyableText: React.FC<CopyableTextProps> = ({ text, fontSize = 18 }) => {
   const [justCopied, setJustCopied] = useState(false);
 
   const handleClick = () => {
@@ -30,7 +29,7 @@ const CopyableText: React.FC<CopyableTextProps> = props => {
   };
 
   return (
-    <div className="copyable-text" onClick={handleClick}>
+    <div className="copyable-text" style={{ fontSize }} onClick={handleClick}>
       {justCopied ? "COPIED!" : text}
     </div>
   );
