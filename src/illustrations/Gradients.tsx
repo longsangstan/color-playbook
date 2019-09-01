@@ -8,7 +8,7 @@ interface GradientsProps {
 }
 
 const ItemsWrapper = styled.div`
-  max-width: 800px;
+  max-width: 700px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -58,7 +58,7 @@ const HexWrapper = styled.div`
 const Gradients: React.FC<GradientsProps> = ({ colors }) => {
   let colorPairs: string[][] = [];
 
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < colors.length; i++) {
     for (let j = 0; j < colors.length; j++) {
       if (colors[i].toHexString() !== colors[j].toHexString()) {
         const newPair = [colors[i].toHexString(), colors[j].toHexString()];
