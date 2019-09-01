@@ -5,6 +5,7 @@ import Select from "react-select"; // a bug for value prop type for grouped opti
 
 import Pattern from "./illustrations/Pattern";
 import Gradients from "./illustrations/Gradients";
+import Bootstrap from "./illustrations/Bootstrap";
 
 interface PalettePageProps {
   colors: tinycolor.Instance[];
@@ -36,7 +37,7 @@ const PalettePage: React.FC<PalettePageProps> = ({
   colors,
   activeColorKey
 }) => {
-  const [selectedOption, setSelectedOption] = useState(graphicsOptions[1]);
+  const [selectedOption, setSelectedOption] = useState(uiOptions[0]);
 
   const renderIllustration = () => {
     if (selectedOption.value === "pattern") {
@@ -51,6 +52,14 @@ const PalettePage: React.FC<PalettePageProps> = ({
       return (
         <div>
           <Gradients colors={colors} />
+        </div>
+      );
+    }
+
+    if (selectedOption.value === "bootstrap") {
+      return (
+        <div>
+          <Bootstrap colors={colors} />
         </div>
       );
     }
