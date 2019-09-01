@@ -8,6 +8,7 @@ import Gradients from "./illustrations/Gradients";
 
 interface PalettePageProps {
   colors: tinycolor.Instance[];
+  activeColorKey: number;
 }
 
 const uiOptions = [
@@ -17,7 +18,7 @@ const uiOptions = [
 
 const graphicsOptions = [
   { value: "pattern", label: "Pattern" },
-  { value: "gradient", label: "Gradient" }
+  { value: "gradients", label: "Gradients" }
 ];
 
 const groupedOptions = [
@@ -31,7 +32,10 @@ const groupedOptions = [
   }
 ];
 
-const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
+const PalettePage: React.FC<PalettePageProps> = ({
+  colors,
+  activeColorKey
+}) => {
   const [selectedOption, setSelectedOption] = useState(graphicsOptions[1]);
 
   const renderIllustration = () => {
@@ -43,7 +47,7 @@ const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
       );
     }
 
-    if (selectedOption.value === "gradient") {
+    if (selectedOption.value === "gradients") {
       return (
         <div>
           <Gradients colors={colors} />
@@ -55,6 +59,33 @@ const PalettePage: React.FC<PalettePageProps> = ({ colors }) => {
   return (
     <div className="palette-page">
       <div style={{ width: 200, marginTop: 25, marginBottom: 25 }}>
+        <style type="text/css">
+          {`
+          .illustrations-dropdown__option--is-focused {
+            background-color: ${colors[activeColorKey]
+              .clone()
+              .brighten(30)
+              .toHexString()} !important;
+          }
+
+          .illustrations-dropdown__option--is-selected {
+            background-color: ${colors[
+              activeColorKey
+            ].toHexString()} !important;
+          }
+
+          .illustrations-dropdown__control--is-focused {
+            border-color: ${colors[activeColorKey].toHexString()} !important;
+            box-shadow: 0 0 0 1px ${colors[
+              activeColorKey
+            ].toHexString()} !important;
+          }
+
+          .illustrations-dropdown__control:hover {
+            border-color: ${colors[activeColorKey].toHexString()} !important;
+          }
+          `}
+        </style>
         <Select
           className="illustrations-dropdown"
           classNamePrefix="illustrations-dropdown"

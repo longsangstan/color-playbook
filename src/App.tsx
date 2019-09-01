@@ -123,7 +123,12 @@ const App: React.FC<AppProps> = props => {
 
         <Route
           path="/palette"
-          render={() => <PalettePage colors={paletteBarInput} />}
+          render={() => (
+            <PalettePage
+              colors={paletteBarInput}
+              activeColorKey={activeColorKey}
+            />
+          )}
         />
 
         <Route path="/about" render={() => <AboutPage />} />
