@@ -74,6 +74,13 @@ const PalettePage: React.FC<PalettePageProps> = ({
             ].toHexString()} !important;
           }
 
+          .illustrations-dropdown__option:active {
+            background-color: ${colors[activeColorKey]
+              .clone()
+              .brighten(40)
+              .toHexString()} !important;
+          }
+
           .illustrations-dropdown__control--is-focused {
             border-color: ${colors[activeColorKey].toHexString()} !important;
             box-shadow: 0 0 0 1px ${colors[
