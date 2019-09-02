@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 interface BootstrapProps {
   colors: tinycolor.Instance[];
@@ -224,7 +225,81 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
     </>
   );
 
-  return <div>{Buttons}</div>;
+  const ProgressBars = (
+    <div style={{ padding: 10 }}>
+      <style type="text/css">
+        {`
+          .progress {
+            display: flex;
+            height: 1rem;
+            overflow: hidden;
+            font-size: .75rem;
+            background-color: #e9ecef;
+            border-radius: .25rem;
+          }
+
+          .progress-bar-striped {
+              background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+              background-size: 1rem 1rem;
+          }
+
+          .progress-bar {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #007bff;
+            -webkit-transition: width .6s ease;
+            transition: width .6s ease;
+            box-shadow: 0 0 black;
+        }
+
+        .bg-primary {
+          background-color: ${colors[0].toHexString()}!important;
+        }
+
+        .bg-success {
+          background-color: ${colors[1].toHexString()}!important;
+        }
+
+        .bg-danger {
+          background-color: ${colors[2].toHexString()}!important;
+        }
+
+        .bg-warning {
+          background-color: ${colors[3].toHexString()}!important;
+        }
+
+        .bg-info {
+          background-color: ${colors[4].toHexString()}!important;
+        }
+      `}
+      </style>
+
+      {variants.map((variant, idx) => (
+        <div style={{ margin: 4 }}>
+          <ProgressBar
+            key={idx}
+            striped
+            animated
+            variant={
+              variant as "success" | "danger" | "warning" | "info" | undefined
+            }
+            now={Math.floor(Math.random() * (90 - 20 + 1) + 20)}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
+  return (
+    <div>
+      {Buttons}
+      {ProgressBars}
+    </div>
+  );
 };
 
 export default Bootstrap;
