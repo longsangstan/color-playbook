@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import Spinner from "react-bootstrap/Spinner";
 
 interface BootstrapProps {
   colors: tinycolor.Instance[];
@@ -239,8 +239,22 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
           }
 
           .progress-bar-striped {
-              background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-              background-size: 1rem 1rem;
+            background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+            background-size: 1rem 1rem;
+          }
+
+          .progress-bar-animated {
+            -webkit-animation: progress-bar-stripes 1s linear infinite;
+            animation: progress-bar-stripes 1s linear infinite;
+          }
+
+          @keyframes progress-bar-stripes {
+            0% {
+              background-position: 1rem 0;
+            }
+            100% {
+              background-position: 0 0;
+            }
           }
 
           .progress-bar {
@@ -254,27 +268,27 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
             -webkit-transition: width .6s ease;
             transition: width .6s ease;
             box-shadow: 0 0 black;
-        }
+          }
 
-        .bg-primary {
-          background-color: ${colors[0].toHexString()}!important;
-        }
+          .bg-primary {
+            background-color: ${colors[0].toHexString()}!important;
+          }
 
-        .bg-success {
-          background-color: ${colors[1].toHexString()}!important;
-        }
+          .bg-success {
+            background-color: ${colors[1].toHexString()}!important;
+          }
 
-        .bg-danger {
-          background-color: ${colors[2].toHexString()}!important;
-        }
+          .bg-danger {
+            background-color: ${colors[2].toHexString()}!important;
+          }
 
-        .bg-warning {
-          background-color: ${colors[3].toHexString()}!important;
-        }
+          .bg-warning {
+            background-color: ${colors[3].toHexString()}!important;
+          }
 
-        .bg-info {
-          background-color: ${colors[4].toHexString()}!important;
-        }
+          .bg-info {
+            background-color: ${colors[4].toHexString()}!important;
+          }
       `}
       </style>
 
@@ -294,10 +308,68 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
     </div>
   );
 
+  const Spinners = (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center"
+      }}
+    >
+      <style type="text/css">{`
+        .spinner-border {
+          display: inline-block;
+          width: 2rem;
+          height: 2rem;
+          vertical-align: text-bottom;
+          border: .25em solid;
+          border-right: .25em solid transparent;
+          border-radius: 50%;
+          -webkit-animation: spinner-border .75s linear infinite;
+          animation: spinner-border .75s linear infinite;
+      }
+      
+        .text-primary {
+            color: ${colors[0].toHexString()}!important;
+        }
+
+        .text-success {
+          color: ${colors[1].toHexString()}!important;
+        }
+
+        .text-danger {
+          color: ${colors[2].toHexString()}!important;
+        }
+
+        .text-warning {
+          color: ${colors[3].toHexString()}!important;
+        }
+
+        .text-info {
+          color: ${colors[4].toHexString()}!important;
+        }
+
+        @keyframes spinner-border{
+          100% {
+            -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+          }
+        }
+      `}</style>
+
+      {variants.map((variant, idx) => (
+        <div style={{ margin: 4 }}>
+          <Spinner animation="border" variant={variant} />
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div>
       {Buttons}
       {ProgressBars}
+      {Spinners}
     </div>
   );
 };
