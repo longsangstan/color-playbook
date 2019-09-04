@@ -23,6 +23,7 @@ import { DropResult } from "react-beautiful-dnd";
 
 import reorder from "./reorder";
 import getPaletteFromQueryParams from "./get-palette-from-query-params";
+import getRandomPalette from "./get-random-palette";
 
 interface AppProps {
   location: H.Location;
@@ -146,10 +147,16 @@ const App: React.FC<AppProps> = props => {
       />
 
       <div className="button-bar">
-        <IconButton
+        {/* <IconButton
           iconName="invert_colors"
           isActive={pathname.includes("/color")}
           onClick={() => pushPath("/color")}
+        /> */}
+
+        <IconButton
+          iconName="autorenew"
+          isActive={false}
+          onClick={() => setPaletteBarInput(getRandomPalette(5))}
         />
 
         <IconButton
