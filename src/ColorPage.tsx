@@ -1,18 +1,16 @@
-import React from "react";
-
-import tinycolor from "tinycolor2";
-import PalettesContainer from "./PalettesContainer";
-import Palette from "./Palette";
 import CopyableText from "./CopyableText";
-
-import getPrimaryPalette from "./get-primary-palette";
+import Palette from "./Palette";
+import PalettesContainer from "./PalettesContainer";
+import React from "react";
+import getPrimaryPalette from "./utils/get-primary-palette";
+import tinycolor from "tinycolor2";
 
 interface ColorPageProps {
   colorInput: string;
   setColorInput: (input: string) => void;
 }
 
-const ColorPage: React.FC<ColorPageProps> = props => {
+const ColorPage: React.FC<ColorPageProps> = (props) => {
   const { colorInput, setColorInput } = props;
 
   const onColorInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +24,7 @@ const ColorPage: React.FC<ColorPageProps> = props => {
     tinycolor.random(),
     tinycolor.random(),
     tinycolor.random(),
-    tinycolor.random()
+    tinycolor.random(),
   ];
 
   /**
@@ -34,32 +32,30 @@ const ColorPage: React.FC<ColorPageProps> = props => {
    */
 
   const complementPalette = getPrimaryPalette(
-    tinycolor(colorInput)
-      .complement()
-      .toHexString()
+    tinycolor(colorInput).complement().toHexString()
   );
 
   const triadPalettes = tinycolor(colorInput)
     .triad()
-    .map(t => getPrimaryPalette(t.toHexString()));
+    .map((t) => getPrimaryPalette(t.toHexString()));
 
   triadPalettes.shift();
 
   const analogousPalettes = tinycolor(colorInput)
     .analogous(3, 12)
-    .map(t => getPrimaryPalette(t.toHexString()));
+    .map((t) => getPrimaryPalette(t.toHexString()));
 
   analogousPalettes.shift();
 
   const splitcomplementPalettes = tinycolor(colorInput)
     .splitcomplement()
-    .map(t => getPrimaryPalette(t.toHexString()));
+    .map((t) => getPrimaryPalette(t.toHexString()));
 
   splitcomplementPalettes.shift();
 
   const tetradPalettes = tinycolor(colorInput)
     .tetrad()
-    .map(t => getPrimaryPalette(t.toHexString()));
+    .map((t) => getPrimaryPalette(t.toHexString()));
 
   tetradPalettes.shift();
 
@@ -71,7 +67,7 @@ const ColorPage: React.FC<ColorPageProps> = props => {
           backgroundColor: tinycolor(colorInput).isValid()
             ? tinycolor(colorInput).toHexString()
             : "white",
-          height: "25vh"
+          height: "25vh",
         }}
       >
         <div style={{ height: 50 }} />
@@ -84,7 +80,7 @@ const ColorPage: React.FC<ColorPageProps> = props => {
             color:
               tinycolor(colorInput).isValid() && tinycolor(colorInput).isDark()
                 ? "white"
-                : "black"
+                : "black",
           }}
           className="color-input"
           placeholder="pick or enter a color"
@@ -95,7 +91,7 @@ const ColorPage: React.FC<ColorPageProps> = props => {
         <div
           className="color-input-picker"
           style={{
-            opacity: tinycolor(colorInput).isValid() ? 0 : 1
+            opacity: tinycolor(colorInput).isValid() ? 0 : 1,
           }}
         >
           <Palette

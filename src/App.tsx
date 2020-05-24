@@ -1,29 +1,24 @@
-import React, { useState } from "react";
 import "./App.css";
 
-import ReactGA from "react-ga";
-
-import tinycolor from "tinycolor2";
-
 import * as H from "history";
-import { Route, Redirect, Switch } from "react-router-dom";
-import { withRouter } from "react-router";
-import queryString from "query-string";
 
-import ColorPage from "./ColorPage";
-import PalettePage from "./PalettePage";
+import React, { useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+
 import AboutPage from "./AboutPage";
-
-import IconButton from "./IconButton";
-
-import PaletteBar from "./PaletteBar";
-
+import ColorPage from "./ColorPage";
 import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
-
-import reorder from "./reorder";
-import getPaletteFromQueryParams from "./get-palette-from-query-params";
-import getRandomPalette from "./get-random-palette";
+import IconButton from "./IconButton";
+import PaletteBar from "./PaletteBar";
+import PalettePage from "./PalettePage";
+import ReactGA from "react-ga";
+import getPaletteFromQueryParams from "./utils/get-palette-from-query-params";
+import getRandomPalette from "./utils/get-random-palette";
+import queryString from "query-string";
+import reorder from "./utils/reorder";
+import tinycolor from "tinycolor2";
+import { withRouter } from "react-router";
 
 interface AppProps {
   location: H.Location;
@@ -31,11 +26,11 @@ interface AppProps {
 }
 
 ReactGA.initialize("UA-118263436-4", {
-  debug: false
+  debug: false,
 });
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-const App: React.FC<AppProps> = props => {
+const App: React.FC<AppProps> = (props) => {
   const { location, history } = props;
   const { pathname, search } = location;
 
@@ -77,7 +72,7 @@ const App: React.FC<AppProps> = props => {
   };
 
   const handlePickerColorChange = (color: ColorResult) => {
-    setPaletteBarInput(paletteBarInput => {
+    setPaletteBarInput((paletteBarInput) => {
       let newInput = [...paletteBarInput];
       newInput[activeColorKey] = tinycolor(color.hex);
       return newInput;
