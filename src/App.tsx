@@ -56,9 +56,18 @@ const App: React.FC<AppProps> = (props) => {
    * Palette Page
    */
 
-  const [paletteBarInput, setPaletteBarInput] = useState(
-    getPaletteFromQueryParams(queryParams)
-  );
+  const paletteBarInput = getPaletteFromQueryParams(queryParams);
+
+  const setPaletteBarInput = (colors: tinycolor.Instance[]) => {
+    const queryObj = {
+      colors: colors.map((color) => color.toHex()),
+    };
+
+    history.push(
+      `/palette?${queryString.stringify(queryObj, { arrayFormat: "comma" })}`
+    );
+  };
+
   const [activeColorKey, setActiveColorKey] = useState(0);
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
 
@@ -72,11 +81,10 @@ const App: React.FC<AppProps> = (props) => {
   };
 
   const handlePickerColorChange = (color: ColorResult) => {
-    setPaletteBarInput((paletteBarInput) => {
-      let newInput = [...paletteBarInput];
-      newInput[activeColorKey] = tinycolor(color.hex);
-      return newInput;
-    });
+    let newInput = [...paletteBarInput];
+    newInput[activeColorKey] = tinycolor(color.hex);
+
+    setPaletteBarInput(newInput);
   };
 
   const handleDragEnd = (result: DropResult) => {
