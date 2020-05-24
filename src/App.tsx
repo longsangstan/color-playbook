@@ -11,7 +11,7 @@ import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
 import IconButton from "./IconButton";
 import PaletteBar from "./PaletteBar";
-import PalettePage from "./PalettePage";
+import PalettePage from "./palette-page";
 import ReactGA from "react-ga";
 import getPaletteFromQueryParams from "./utils/get-palette-from-query-params";
 import getRandomPalette from "./utils/get-random-palette";
