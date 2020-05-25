@@ -78,19 +78,28 @@ const MaterialDesign: React.FC<MaterialDesignProps> = ({ colors }) => {
           `}
           </style>
           <Box component="span" m={1}>
-            <Badge badgeContent={4} color="primary">
+            <Badge
+              badgeContent={Math.round(Math.random() * 10) + 1}
+              color="primary"
+            >
               <MailOutlineIcon />
             </Badge>
           </Box>
 
           <Box component="span" m={1}>
-            <Badge badgeContent={4} color="secondary">
+            <Badge
+              badgeContent={Math.round(Math.random() * 10) + 1}
+              color="secondary"
+            >
               <MailOutlineIcon />
             </Badge>
           </Box>
 
           <Box component="span" m={1}>
-            <Badge badgeContent={4} color="error">
+            <Badge
+              badgeContent={Math.round(Math.random() * 10) + 1}
+              color="error"
+            >
               <MailOutlineIcon />
             </Badge>
           </Box>
