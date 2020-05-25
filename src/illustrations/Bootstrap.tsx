@@ -1,8 +1,6 @@
-import React from "react";
-
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import React from "react";
 import Spinner from "react-bootstrap/Spinner";
 
 interface BootstrapProps {
@@ -26,89 +24,8 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
     "success",
     "danger",
     "warning",
-    "info"
+    "info",
   ];
-
-  const Alerts = (
-    <>
-      <style type="text/css">
-        {`
-      .alert {
-          position: relative;
-          padding: .75rem 1.25rem;
-          margin-bottom: 1rem;
-          border: 1px solid transparent;
-          border-radius: .25rem;
-      }
-
-      .alert-primary {
-          color: ${colors[0].toHexString()};
-          background-color: ${colors[0]
-            .clone()
-            .brighten(40)
-            .toHexString()};
-          border-color: ${colors[0]
-            .clone()
-            .brighten(30)
-            .toHexString()};
-      }
-
-      .alert-success {
-          color: ${colors[1].toHexString()};
-          background-color: ${colors[1]
-            .clone()
-            .brighten(40)
-            .toHexString()};
-          border-color: ${colors[1]
-            .clone()
-            .brighten(30)
-            .toHexString()};
-      }
-
-      .alert-danger {
-          color: ${colors[2].toHexString()};
-          background-color: ${colors[2]
-            .clone()
-            .brighten(40)
-            .toHexString()};
-          border-color: ${colors[2]
-            .clone()
-            .brighten(30)
-            .toHexString()};
-      }
-
-      .alert-warning {
-          color: ${colors[3].toHexString()};
-          background-color: ${colors[3]
-            .clone()
-            .brighten(40)
-            .toHexString()};
-          border-color: ${colors[3]
-            .clone()
-            .brighten(30)
-            .toHexString()};
-      }
-
-      .alert-info {
-          color: ${colors[4].toHexString()};
-          background-color: ${colors[4]
-            .clone()
-            .brighten(40)
-            .toHexString()};
-          border-color: ${colors[4]
-            .clone()
-            .brighten(30)
-            .toHexString()};
-      }
-    `}
-      </style>
-      {variants.map((variant, idx) => (
-        <Alert key={idx} variant={variant}>
-          This is a {variant} alert—check it out!
-        </Alert>
-      ))}
-    </>
-  );
 
   const Buttons = (
     <>
@@ -194,14 +111,12 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         {variants.map((variant, idx) => (
-          <div style={{ margin: 4 }}>
-            <Button key={idx} variant={variant}>
-              {variant}
-            </Button>
+          <div style={{ margin: 4 }} key={idx}>
+            <Button variant={variant}>{variant}</Button>
           </div>
         ))}
       </div>
@@ -211,12 +126,12 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         {variants.map((variant, idx) => (
-          <div style={{ margin: 4 }}>
-            <Button key={idx} variant={("outline-" + variant) as variant}>
+          <div style={{ margin: 4 }} key={idx}>
+            <Button variant={("outline-" + variant) as variant}>
               {variant}
             </Button>
           </div>
@@ -293,9 +208,8 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
       </style>
 
       {variants.map((variant, idx) => (
-        <div style={{ margin: 4 }}>
+        <div style={{ margin: 4 }} key={idx}>
           <ProgressBar
-            key={idx}
             striped
             animated
             variant={
@@ -313,7 +227,7 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center"
+        justifyContent: "center",
       }}
     >
       <style type="text/css">{`
@@ -358,7 +272,7 @@ const Bootstrap: React.FC<BootstrapProps> = ({ colors }) => {
       `}</style>
 
       {variants.map((variant, idx) => (
-        <div style={{ margin: 4 }}>
+        <div style={{ margin: 4 }} key={idx}>
           <Spinner animation="border" variant={variant} />
         </div>
       ))}

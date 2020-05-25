@@ -15,6 +15,7 @@ import PalettePage from "./palette-page";
 import ReactGA from "react-ga";
 import getPaletteFromQueryParams from "./utils/get-palette-from-query-params";
 import getRandomPalette from "./utils/get-random-palette";
+import paletteToQueryString from "./utils/palette-to-query-string";
 import queryString from "query-string";
 import reorder from "./utils/reorder";
 import tinycolor from "tinycolor2";
@@ -56,17 +57,19 @@ const App: React.FC<AppProps> = (props) => {
    * Palette Page
    */
 
-  const paletteBarInput = getPaletteFromQueryParams(queryParams);
+  const paletteBarInput =
+    getPaletteFromQueryParams(queryParams) || getRandomPalette(5);
 
   const setPaletteBarInput = (colors: tinycolor.Instance[]) => {
-    const queryObj = {
-      colors: colors.map((color) => color.toHex()),
-    };
-
-    history.push(
-      `/palette?${queryString.stringify(queryObj, { arrayFormat: "comma" })}`
-    );
+    history.push(`/palette?${paletteToQueryString(colors)}`);
   };
+
+  if (
+    pathname.includes("/palette") &&
+    !getPaletteFromQueryParams(queryParams)
+  ) {
+    setPaletteBarInput(paletteBarInput);
+  }
 
   const [activeColorKey, setActiveColorKey] = useState(0);
   const [isPaletteBarOpen, setIsPaletteBarOpen] = useState(true);
@@ -75,7 +78,7 @@ const App: React.FC<AppProps> = (props) => {
     if (pathname.includes("/palette")) {
       setIsPaletteBarOpen(!isPaletteBarOpen);
     } else {
-      pushPath("/palette");
+      pushPath(`/palette?${paletteToQueryString(getRandomPalette(5))}`);
       setIsPaletteBarOpen(true);
     }
   };
@@ -137,7 +140,13 @@ const App: React.FC<AppProps> = (props) => {
 
         <Route path="/about" render={() => <AboutPage />} />
 
-        <Route render={() => <Redirect to="/palette" />} />
+        <Route
+          render={() => (
+            <Redirect
+              to={`/palette?${paletteToQueryString(getRandomPalette(5))}`}
+            />
+          )}
+        />
       </Switch>
 
       <PaletteBar

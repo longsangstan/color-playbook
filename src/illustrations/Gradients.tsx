@@ -1,7 +1,6 @@
+import CopyableText from "../CopyableText";
 import React from "react";
 import styled from "styled-components";
-
-import CopyableText from "../CopyableText";
 
 interface GradientsProps {
   colors: tinycolor.Instance[];
@@ -25,8 +24,8 @@ const Gradient = styled.div`
   width: 140px;
   background: linear-gradient(
     to bottom right,
-    ${props => props.theme.firstColor},
-    ${props => props.theme.secondColor}
+    ${(props) => props.theme.firstColor},
+    ${(props) => props.theme.secondColor}
   );
   border-radius: 15px 15px 0 0;
 `;
@@ -42,7 +41,7 @@ const ColorMark = styled.div`
   height: 12px;
   width: 12px;
   border-radius: 100px
-  background: ${props => props.theme.color};
+  background: ${(props) => props.theme.color};
   margin-right: 5px;
 `;
 
@@ -73,8 +72,8 @@ const Gradients: React.FC<GradientsProps> = ({ colors }) => {
         let firstColor = pair[0];
         let secondColor = pair[1];
         return (
-          <ItemWrapper className="with-shadow">
-            <Gradient key={index} theme={{ firstColor, secondColor }} />
+          <ItemWrapper className="with-shadow" key={index}>
+            <Gradient theme={{ firstColor, secondColor }} />
             <TextWrapper>
               <HexWrapper>
                 <ColorMark theme={{ color: firstColor }} />

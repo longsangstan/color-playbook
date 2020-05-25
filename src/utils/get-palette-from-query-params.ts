@@ -1,16 +1,15 @@
-import tinycolor from "tinycolor2";
 import queryString from "query-string";
-import getRandomPalatte from "./get-random-palette";
+import tinycolor from "tinycolor2";
 
 const getPaletteFromQueryParams = (
   queryParams: queryString.ParsedQuery<string>
-): tinycolor.Instance[] => {
-  let result = getRandomPalatte(5);
+) => {
+  let result = null;
 
   if (typeof queryParams.colors === "string") {
     const colorStrings = queryParams.colors.split(",");
     if (colorStrings.length === 5) {
-      result = colorStrings.map(item => tinycolor(item));
+      result = colorStrings.map((item) => tinycolor(item));
     }
   }
 
