@@ -1,4 +1,7 @@
+import { Badge, Box, CircularProgress, TextField } from "@material-ui/core";
+
 import Button from "@material-ui/core/Button";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import React from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -19,13 +22,88 @@ const MaterialDesign: React.FC<MaterialDesignProps> = ({ colors }) => {
   return (
     <div style={{ fontFamily: "Roboto" }}>
       <ThemeProvider theme={theme}>
-        <Button variant="contained">Default</Button>
-        <Button variant="contained" color="primary">
-          Primary
-        </Button>
-        <Button variant="contained" color="secondary">
-          Secondary
-        </Button>
+        <Box m={4}>
+          <Box component="span" m={0.5}>
+            <Button variant="contained">Default</Button>
+          </Box>
+          <Box component="span" m={0.5}>
+            <Button variant="contained" color="primary">
+              Primary
+            </Button>
+          </Box>
+          <Box component="span" m={0.5}>
+            <Button variant="contained" color="secondary">
+              Secondary
+            </Button>
+          </Box>
+        </Box>
+
+        <Box m={4}>
+          <Box component="span" m={0.5}>
+            <Button>Default</Button>
+          </Box>
+          <Box component="span" m={0.5}>
+            <Button color="primary">Primary</Button>
+          </Box>
+          <Box component="span" m={0.5}>
+            <Button color="secondary">Secondary</Button>
+          </Box>
+        </Box>
+
+        <Box m={4}>
+          <Box component="span" m={0.5}>
+            <TextField
+              id="standard-basic"
+              label="Standard"
+              defaultValue="Hello World"
+            />
+          </Box>
+          <Box component="span" m={0.5}>
+            <TextField
+              error
+              id="standard-error"
+              label="Error"
+              defaultValue="Hello World"
+              helperText="Incorrect entry."
+            />
+          </Box>
+        </Box>
+
+        <Box m={4}>
+          <style type="text/css">
+            {`
+            .MuiBadge-badge {
+              z-index: 0
+            }
+          `}
+          </style>
+          <Box component="span" m={1}>
+            <Badge badgeContent={4} color="primary">
+              <MailOutlineIcon />
+            </Badge>
+          </Box>
+
+          <Box component="span" m={1}>
+            <Badge badgeContent={4} color="secondary">
+              <MailOutlineIcon />
+            </Badge>
+          </Box>
+
+          <Box component="span" m={1}>
+            <Badge badgeContent={4} color="error">
+              <MailOutlineIcon />
+            </Badge>
+          </Box>
+        </Box>
+
+        <Box m={4}>
+          <Box component="span" m={1}>
+            <CircularProgress />
+          </Box>
+          <Box component="span" m={1}>
+            <CircularProgress color="secondary" />
+          </Box>
+        </Box>
       </ThemeProvider>
     </div>
   );
