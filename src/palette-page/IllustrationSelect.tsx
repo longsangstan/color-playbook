@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { OptionType, groupedOptions } from "./IllustrationSelect.options";
+import Select, { ValueType } from "react-select"; // a bug for value prop type for grouped options?
 
-// @ts-ignore
-import Select from "react-select"; // a bug for value prop type for grouped options?
+import React from "react";
 
 interface IllustrationSelectProps {
   colors: tinycolor.Instance[];
@@ -10,29 +10,8 @@ interface IllustrationSelectProps {
     value: string;
     label: string;
   };
-  setSelectedOption: (option: { value: string; label: string }) => void;
+  setSelectedOption: (option: OptionType) => void;
 }
-
-const uiOptions = [
-  { value: "bootstrap", label: "Bootstrap" },
-  { value: "material", label: "Material Design" },
-];
-
-const graphicsOptions = [
-  { value: "pattern", label: "Pattern" },
-  { value: "gradients", label: "Gradients" },
-];
-
-const groupedOptions = [
-  {
-    label: "UI",
-    options: uiOptions,
-  },
-  {
-    label: "Graphics",
-    options: graphicsOptions,
-  },
-];
 
 const IllustrationSelect: React.FC<IllustrationSelectProps> = ({
   colors,
@@ -80,7 +59,8 @@ const IllustrationSelect: React.FC<IllustrationSelectProps> = ({
         className="illustrations-dropdown"
         classNamePrefix="illustrations-dropdown"
         value={selectedOption}
-        onChange={(value: { value: string; label: string }) => {
+        onChange={(selectedOption: ValueType<OptionType>) => {
+          const value = selectedOption as OptionType;
           setSelectedOption(value);
         }}
         options={groupedOptions}

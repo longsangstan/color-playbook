@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import IllustrationSelect from "./IllustrationSelect";
 import Illustrations from "../illustrations";
+import { uiOptions } from "./IllustrationSelect.options";
 
 interface PalettePageProps {
   colors: tinycolor.Instance[];
@@ -12,10 +13,7 @@ const PalettePage: React.FC<PalettePageProps> = ({
   colors,
   activeColorKey,
 }) => {
-  const [selectedOption, setSelectedOption] = useState({
-    value: "bootstrap",
-    label: "Bootstrap",
-  });
+  const [selectedOption, setSelectedOption] = useState(uiOptions[1]);
 
   return (
     <div className="palette-page">
