@@ -22,7 +22,7 @@ const MaterialDesign: React.FC<MaterialDesignProps> = ({ colors }) => {
   return (
     <div style={{ fontFamily: "Roboto" }}>
       <ThemeProvider theme={theme}>
-        <Box m={4}>
+        <Box>
           <Box component="span" m={0.5}>
             <Button variant="contained">Default</Button>
           </Box>
