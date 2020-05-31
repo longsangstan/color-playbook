@@ -1,27 +1,27 @@
-import React from "react";
+import "./PaletteBar.css";
 
-import posed from "react-pose";
 import { ChromePicker, ColorResult } from "react-color";
 import {
   DragDropContext,
-  Droppable,
   Draggable,
-  DropResult
+  DropResult,
+  Droppable,
 } from "react-beautiful-dnd";
 
-import tinycolor from "tinycolor2";
-
 import ColorPlate from "./ColorPlate";
+import React from "react";
+import posed from "react-pose";
+import tinycolor from "tinycolor2";
 
 const Wrapper = posed.div({
   visible: {
     applyAtStart: { display: "" },
-    y: 0
+    y: 0,
   },
   hidden: {
     applyAtEnd: { display: "none" },
-    y: 600
-  }
+    y: 600,
+  },
 });
 
 interface PaletteBarProps {
@@ -39,13 +39,13 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
   activeColorKey,
   handleColorClick,
   handlePickerColorChange,
-  handleDragEnd
+  handleDragEnd,
 }) => {
   return (
     <Wrapper className={`palette-bar`} pose={isVisible ? "visible" : "hidden"}>
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="droppable" direction="horizontal">
-          {provided => (
+          {(provided) => (
             <div
               ref={provided.innerRef}
               className="palette-bar-row"
@@ -57,7 +57,7 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
                   draggableId={index.toString()}
                   index={index}
                 >
-                  {provided => (
+                  {(provided) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.draggableProps}

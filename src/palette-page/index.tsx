@@ -1,3 +1,5 @@
+import "./PalettePage.css";
+
 import React, { useState } from "react";
 
 import IllustrationSelect from "./IllustrationSelect";

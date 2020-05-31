@@ -1,3 +1,5 @@
+import "./IconButton.css";
+
 import React from "react";
 import posed from "react-pose";
 
@@ -10,14 +12,14 @@ interface IconButtonProps {
 const Wrapper = posed.div({
   pressable: true,
   init: { scale: 1 },
-  press: { scale: 0.8 }
+  press: { scale: 0.8 },
 });
 
 const IconButton: React.FC<IconButtonProps> = ({
   iconName,
   isActive = false,
   filled = false,
-  onClick
+  onClick,
 }) => {
   const className = ["icon-button-wrapper", "animated", "bounceIn"];
   if (isActive) {

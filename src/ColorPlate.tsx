@@ -1,3 +1,5 @@
+import "./ColorPlate.css";
+
 import React from "react";
 
 interface ColorPlateProps {
@@ -11,16 +13,16 @@ const ColorPlate: React.FC<ColorPlateProps> = ({
   filled = true,
   size,
   tinycolor,
-  onColorClick
+  onColorClick,
 }) => {
   return (
     <div
-      className="color animated bounceIn"
+      className="color-plate animated bounceIn"
       style={{
         borderColor: tinycolor.toHexString(),
         background: filled ? tinycolor.toHexString() : "#fff",
         width: size - 4,
-        height: size - 4
+        height: size - 4,
       }}
       onClick={() => onColorClick(tinycolor.toHexString())}
     />

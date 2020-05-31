@@ -39,31 +39,6 @@ a {
   justify-content: center;
 }
 
-.copyable-text {
-  cursor: pointer;
-  /* margin: 10px 0px; */
-  font-weight: bold;
-  font-size: 18px;
-  color: #4c4c4c;
-}
-
-.color {
-  margin: 5px;
-  border-width: 4px;
-  border-style: solid;
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-  transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
-}
-
-.palette-bar-row .color {
-  transition: none;
-}
-
 .palette {
   display: flex;
   justify-content: center;
@@ -83,84 +58,6 @@ a {
 .color-input-picker {
   height: 50px;
   transition: opacity 0.5s;
-}
-
-.icon-button-wrapper {
-  cursor: pointer;
-  height: 25px;
-  width: 25px;
-  padding: 5px;
-  border-radius: 100px;
-  border: 3px transparent solid;
-}
-
-.icon-button-wrapper.highlighted {
-  background: #e0e0e0;
-}
-
-.icon-button-wrapper.highlighted-outline {
-  border: 3px #e0e0e0 solid;
-}
-
-.material-icons {
-  user-select: none;
-}
-
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.palette-bar {
-  animation-duration: 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  height: 340px;
-  width: 300px;
-  left: 50%;
-  margin-left: -150px;
-  position: fixed;
-  bottom: 65px;
-  border-radius: 25px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.palette-bar-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.palette-bar-divider {
-  background-color: #e0e0e0;
-  height: 2px;
-  width: 260px;
-  margin: 10px;
-  border-radius: 100px;
-}
-
-.chrome-picker {
-  width: 260px !important;
-  box-shadow: none !important;
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: bold !important;
-}
-
-.chrome-picker input {
-  font-weight: bold !important;
-  border: none !important;
-  border-bottom: 2px solid #000000 !important;
-  border-radius: 0px !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.palette-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 10px;
 }
 
 .with-shadow {
