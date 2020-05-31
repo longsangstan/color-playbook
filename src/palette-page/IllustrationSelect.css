@@ -1,0 +1,12 @@
+.illustrations-dropdown {
+  text-align: left;
+  font-weight: bold;
+}
+
+.illustrations-dropdown__control {
+  border-radius: 10px !important;
+}
+
+.illustrations-dropdown__control--is-focused {
+  border-radius: 10px !important;
+}

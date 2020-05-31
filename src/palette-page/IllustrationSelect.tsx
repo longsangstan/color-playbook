@@ -1,3 +1,5 @@
+import "./IllustrationSelect.css";
+
 import { OptionType, groupedOptions } from "./IllustrationSelect.options";
 import Select, { ValueType } from "react-select"; // a bug for value prop type for grouped options?
 
