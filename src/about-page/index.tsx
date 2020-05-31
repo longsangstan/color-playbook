@@ -1,12 +1,10 @@
+import "./AboutPage.css";
+
 import React from "react";
 
-interface HelpPageProps {
-  //
-}
-
-const HelpPage: React.FC<HelpPageProps> = () => {
+const HelpPage: React.FC = () => {
   return (
-    <div className="help-page">
+    <div className="about-page">
       <h1>Tips</h1>
       <p>Click the palette icon to show/hide the palette bar.</p>
       <p>

@@ -5,7 +5,7 @@ import * as H from "history";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import AboutPage from "./AboutPage";
+import AboutPage from "./about-page";
 import ButtonBar from "./ButtonBar";
 import ColorPage from "./color-page/ColorPage";
 import { ColorResult } from "react-color";
