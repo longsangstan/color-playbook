@@ -6,10 +6,10 @@ import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import AboutPage from "./AboutPage";
+import ButtonBar from "./ButtonBar";
 import ColorPage from "./ColorPage";
 import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
-import IconButton from "./IconButton";
 import PaletteBar from "./PaletteBar";
 import PalettePage from "./palette-page";
 import ReactGA from "react-ga";
@@ -158,32 +158,14 @@ const App: React.FC<AppProps> = (props) => {
         isVisible={isPaletteBarOpen && pathname.includes("/palette")}
       />
 
-      <div className="button-bar">
-        {/* <IconButton
-          iconName="invert_colors"
-          isActive={pathname.includes("/color")}
-          onClick={() => pushPath("/color")}
-        /> */}
-
-        <IconButton
-          iconName="autorenew"
-          isActive={false}
-          onClick={() => setPaletteBarInput(getRandomPalette(5))}
-        />
-
-        <IconButton
-          iconName="color_lens"
-          isActive={pathname.includes("/palette")}
-          filled={isPaletteBarOpen}
-          onClick={() => handlePaletteButtonClicked()}
-        />
-
-        <IconButton
-          iconName="help_outline"
-          isActive={pathname.includes("/about")}
-          onClick={() => pushPath("/about")}
-        />
-      </div>
+      <ButtonBar
+        onRefreshClick={() => setPaletteBarInput(getRandomPalette(5))}
+        isPaletteActive={pathname.includes("/palette")}
+        isPaletteBarOpen={isPaletteBarOpen}
+        onPaletteClick={handlePaletteButtonClicked}
+        isHelpActive={pathname.includes("/about")}
+        onHelpClick={() => pushPath("/about")}
+      />
     </div>
   );
 };
