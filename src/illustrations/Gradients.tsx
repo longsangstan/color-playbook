@@ -20,7 +20,7 @@ const ItemWrapper = styled.div`
 `;
 
 const Gradient = styled.div`
-  height: 110px;
+  height: 100px;
   width: 140px;
   background: linear-gradient(
     to bottom right,
