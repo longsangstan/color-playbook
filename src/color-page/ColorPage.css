@@ -1,0 +1,47 @@
+.color-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s ease-in-out;
+}
+
+.color-input {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  border: none;
+  border-bottom: 5px solid #000000;
+  border-radius: 0px;
+  outline: none;
+  background: transparent;
+  transition: color 0.5s ease-in-out, border-color 0.1s ease-in-out;
+}
+
+.color-strings-container {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.palette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.palettes-container {
+  margin: 30px;
+}
+
+.palettes-container-title {
+  font-weight: bold;
+  color: grey;
+  margin-bottom: 5px;
+}
+
+.color-input-picker {
+  height: 50px;
+  transition: opacity 0.5s;
+}

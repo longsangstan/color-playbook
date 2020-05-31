@@ -1,6 +1,5 @@
+import ColorPlate from "../ColorPlate";
 import React from "react";
-
-import ColorPlate from "./ColorPlate";
 
 interface PaletteProps {
   tinyColors: tinycolor.Instance[];
@@ -8,7 +7,7 @@ interface PaletteProps {
   colorSize: number;
 }
 
-const Palette: React.FC<PaletteProps> = props => {
+const Palette: React.FC<PaletteProps> = (props) => {
   const { tinyColors, onColorClick, colorSize } = props;
 
   return (

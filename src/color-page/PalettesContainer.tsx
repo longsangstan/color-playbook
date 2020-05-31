@@ -1,6 +1,5 @@
-import React from "react";
-
 import Palette from "./Palette";
+import React from "react";
 
 interface PalettesContainerProps {
   title: string;
@@ -8,7 +7,7 @@ interface PalettesContainerProps {
   onColorClick: (color: string) => void;
 }
 
-const PalettesContainer: React.FC<PalettesContainerProps> = props => {
+const PalettesContainer: React.FC<PalettesContainerProps> = (props) => {
   const { title, palettes, onColorClick } = props;
 
   return (

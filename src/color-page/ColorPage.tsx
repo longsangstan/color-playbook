@@ -1,8 +1,10 @@
-import CopyableText from "./CopyableText";
+import "./ColorPage.css";
+
+import CopyableText from "../CopyableText";
 import Palette from "./Palette";
 import PalettesContainer from "./PalettesContainer";
 import React from "react";
-import getPrimaryPalette from "./utils/get-primary-palette";
+import getPrimaryPalette from "../utils/get-primary-palette";
 import tinycolor from "tinycolor2";
 
 interface ColorPageProps {
