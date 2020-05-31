@@ -26,8 +26,8 @@ interface AppProps {
   history: H.History;
 }
 
-ReactGA.initialize("UA-118263436-4", {
-  debug: false,
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_CODE || "UA-12345678-9", {
+  debug: process.env.NODE_ENV === "development",
 });
 ReactGA.pageview(window.location.pathname + window.location.search);
 
