@@ -33,7 +33,7 @@ const ButtonBar: React.FC<ButtonBarProps> = (props) => {
       <IconButton
         iconName="color_lens"
         isActive={isPaletteActive}
-        filled={isPaletteBarOpen}
+        filled={!isPaletteBarOpen}
         onClick={onPaletteClick}
       />
 
