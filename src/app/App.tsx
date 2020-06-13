@@ -5,19 +5,19 @@ import * as H from "history";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import AboutPage from "./about-page/AboutPage";
+import AboutPage from "../about-page/AboutPage";
 import ButtonBar from "./ButtonBar";
-import ColorPage from "./color-page/ColorPage";
+import ColorPage from "../color-page/ColorPage";
 import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
 import PaletteBar from "./PaletteBar";
-import PalettePage from "./palette-page/PalettePage";
+import PalettePage from "../palette-page/PalettePage";
 import ReactGA from "react-ga";
-import getPaletteFromQueryParams from "./utils/get-palette-from-query-params";
-import getRandomPalette from "./utils/get-random-palette";
-import paletteToQueryString from "./utils/palette-to-query-string";
+import getPaletteFromQueryParams from "../utils/get-palette-from-query-params";
+import getRandomPalette from "../utils/get-random-palette";
+import paletteToQueryString from "../utils/palette-to-query-string";
 import queryString from "query-string";
-import reorder from "./utils/reorder";
+import reorder from "../utils/reorder";
 import tinycolor from "tinycolor2";
 import { withRouter } from "react-router";
 

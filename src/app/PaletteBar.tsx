@@ -8,7 +8,7 @@ import {
   Droppable,
 } from "react-beautiful-dnd";
 
-import ColorPlate from "./ColorPlate";
+import ColorPlate from "../shared/ColorPlate";
 import React from "react";
 import posed from "react-pose";
 import tinycolor from "tinycolor2";

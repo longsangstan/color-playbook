@@ -1,6 +1,6 @@
 import "./ColorPage.css";
 
-import CopyableText from "../CopyableText";
+import CopyableText from "../shared/CopyableText";
 import Palette from "./Palette";
 import PalettesContainer from "./PalettesContainer";
 import React from "react";

@@ -1,4 +1,4 @@
-import ColorPlate from "../ColorPlate";
+import ColorPlate from "../shared/ColorPlate";
 import React from "react";
 
 interface PaletteProps {

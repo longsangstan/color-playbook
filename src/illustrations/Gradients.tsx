@@ -1,4 +1,4 @@
-import CopyableText from "../CopyableText";
+import CopyableText from "../shared/CopyableText";
 import React from "react";
 import styled from "styled-components";
 

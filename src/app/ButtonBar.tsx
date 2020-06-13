@@ -1,6 +1,6 @@
 import "./ButtonBar.css";
 
-import IconButton from "./IconButton";
+import IconButton from "../shared/IconButton";
 import React from "react";
 
 interface ButtonBarProps {
