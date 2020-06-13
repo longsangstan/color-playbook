@@ -2,7 +2,7 @@ import "./AboutPage.css";
 
 import React from "react";
 
-const HelpPage: React.FC = () => {
+const AboutPage: React.FC = () => {
   return (
     <div className="about-page">
       <h1>Tips</h1>
@@ -38,4 +38,4 @@ const HelpPage: React.FC = () => {
   );
 };
 
-export default HelpPage;
+export default AboutPage;

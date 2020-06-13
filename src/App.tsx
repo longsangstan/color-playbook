@@ -5,13 +5,13 @@ import * as H from "history";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import AboutPage from "./about-page";
+import AboutPage from "./about-page/AboutPage";
 import ButtonBar from "./ButtonBar";
 import ColorPage from "./color-page/ColorPage";
 import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
 import PaletteBar from "./PaletteBar";
-import PalettePage from "./palette-page";
+import PalettePage from "./palette-page/PalettePage";
 import ReactGA from "react-ga";
 import getPaletteFromQueryParams from "./utils/get-palette-from-query-params";
 import getRandomPalette from "./utils/get-random-palette";
