@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   background: white;
-  height: 340px;
+  height: 376px;
   width: 300px;
   left: 50%;
   margin-left: -150px;
@@ -30,6 +30,12 @@
   width: 260px;
   margin: 10px;
   border-radius: 100px;
+}
+
+.palette-bar-buttons {
+  width: inherit;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .chrome-picker {

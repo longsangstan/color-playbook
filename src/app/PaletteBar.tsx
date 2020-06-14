@@ -9,6 +9,7 @@ import {
 } from "react-beautiful-dnd";
 
 import ColorPlate from "../shared/ColorPlate";
+import IconButton from "../shared/IconButton";
 import React from "react";
 import posed from "react-pose";
 import tinycolor from "tinycolor2";
@@ -30,6 +31,7 @@ interface PaletteBarProps {
   activeColorKey: number;
   handleColorClick: (key: number) => void;
   handlePickerColorChange: (color: ColorResult) => void;
+  handleColorRefreshClick: () => void;
   handleDragEnd: (result: DropResult) => void;
 }
 
@@ -39,6 +41,7 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
   activeColorKey,
   handleColorClick,
   handlePickerColorChange,
+  handleColorRefreshClick,
   handleDragEnd,
 }) => {
   return (
@@ -81,11 +84,23 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
       </DragDropContext>
 
       <div className="palette-bar-divider" />
+
       <ChromePicker
         disableAlpha={true}
         color={colors[activeColorKey].toHexString()}
         onChange={handlePickerColorChange}
       />
+
+      <div className="palette-bar-buttons">
+        <IconButton iconName="colorize" onClick={() => {}} isActive />
+        <IconButton
+          iconName="invert_colors"
+          onClick={() => {}}
+          isActive={false}
+        />
+        <IconButton iconName="autorenew" onClick={handleColorRefreshClick} />
+        <IconButton iconName="share" onClick={() => {}} />
+      </div>
     </Wrapper>
   );
 };

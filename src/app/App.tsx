@@ -90,6 +90,13 @@ const App: React.FC<AppProps> = (props) => {
     setPaletteBarInput(newInput);
   };
 
+  const handleColorRefreshClick = () => {
+    let newInput = [...paletteBarInput];
+    newInput[activeColorKey] = tinycolor.random();
+
+    setPaletteBarInput(newInput);
+  };
+
   const handleDragEnd = (result: DropResult) => {
     // dropped outside the list
     if (!result.destination) {
@@ -154,6 +161,7 @@ const App: React.FC<AppProps> = (props) => {
         activeColorKey={activeColorKey}
         handleColorClick={setActiveColorKey}
         handlePickerColorChange={handlePickerColorChange}
+        handleColorRefreshClick={handleColorRefreshClick}
         handleDragEnd={handleDragEnd}
         isVisible={isPaletteBarOpen && pathname.includes("/palette")}
       />
