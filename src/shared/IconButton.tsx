@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 interface IconButtonProps {
   iconName: string;
-  isActive: boolean;
+  isActive?: boolean;
   filled?: boolean;
   onClick: () => void;
 }
