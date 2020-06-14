@@ -13,6 +13,7 @@ import IconButton from "../shared/IconButton";
 import React from "react";
 import posed from "react-pose";
 import tinycolor from "tinycolor2";
+import { useState } from "react";
 
 const Wrapper = posed.div({
   visible: {
@@ -35,6 +36,8 @@ interface PaletteBarProps {
   handleDragEnd: (result: DropResult) => void;
 }
 
+type Panel = "picker" | "swatch" | "share";
+
 const PaletteBar: React.FC<PaletteBarProps> = ({
   isVisible,
   colors,
@@ -44,6 +47,8 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
   handleColorRefreshClick,
   handleDragEnd,
 }) => {
+  const [panel, setPanel] = useState<Panel>("picker");
+
   return (
     <Wrapper className={`palette-bar`} pose={isVisible ? "visible" : "hidden"}>
       <DragDropContext onDragEnd={handleDragEnd}>
@@ -85,21 +90,37 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
 
       <div className="palette-bar-divider" />
 
-      <ChromePicker
-        disableAlpha={true}
-        color={colors[activeColorKey].toHexString()}
-        onChange={handlePickerColorChange}
-      />
+      <div className="palette-bar-panel">
+        {panel === "picker" && (
+          <ChromePicker
+            disableAlpha
+            color={colors[activeColorKey].toHexString()}
+            onChange={handlePickerColorChange}
+          />
+        )}
+
+        {panel === "swatch" && <div className="palette-bar-swatch">Swatch</div>}
+
+        {panel === "share" && <div className="palette-bar-share">Share</div>}
+      </div>
 
       <div className="palette-bar-buttons">
-        <IconButton iconName="colorize" onClick={() => {}} isActive />
+        <IconButton
+          iconName="colorize"
+          onClick={() => setPanel("picker")}
+          isActive={panel === "picker"}
+        />
         <IconButton
           iconName="invert_colors"
-          onClick={() => {}}
-          isActive={false}
+          onClick={() => setPanel("swatch")}
+          isActive={panel === "swatch"}
         />
         <IconButton iconName="autorenew" onClick={handleColorRefreshClick} />
-        <IconButton iconName="share" onClick={() => {}} />
+        <IconButton
+          iconName="share"
+          onClick={() => setPanel("share")}
+          isActive={panel === "share"}
+        />
       </div>
     </Wrapper>
   );
