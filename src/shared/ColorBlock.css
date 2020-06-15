@@ -2,3 +2,11 @@
   cursor: pointer;
   transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }
+
+.ColorBlock--first {
+  border-radius: 25px 0px 0px 25px;
+}
+
+.ColorBlock--last {
+  border-radius: 0px 25px 25px 0px;
+}

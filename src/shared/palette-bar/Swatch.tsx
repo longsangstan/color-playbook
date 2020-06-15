@@ -16,6 +16,9 @@ export const Swatch: React.FC<SwatchProps> = (props) => {
     <div className="Swatch">
       {tinyColors.map((t, i) => (
         <ColorBlock
+          position={
+            i === 0 ? "first" : i === tinyColors.length - 1 ? "last" : undefined
+          }
           key={i}
           tinycolor={t}
           onColorClick={onColorClick}
