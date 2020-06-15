@@ -1,0 +1,10 @@
+.SwatchesContainer {
+  margin-bottom: 10px;
+}
+
+.SwatchesContainer__title {
+  font-weight: bold;
+  font-size: 14px;
+  color: grey;
+  margin-bottom: 5px;
+}

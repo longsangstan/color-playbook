@@ -1,0 +1,4 @@
+.ColorBlock {
+  cursor: pointer;
+  transition: background 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}

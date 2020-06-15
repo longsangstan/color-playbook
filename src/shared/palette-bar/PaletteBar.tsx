@@ -8,9 +8,10 @@ import {
   Droppable,
 } from "react-beautiful-dnd";
 
-import ColorPlate from "../shared/ColorPlate";
-import IconButton from "../shared/IconButton";
+import ColorPlate from "../ColorPlate";
+import IconButton from "../IconButton";
 import React from "react";
+import { SwatchPanel } from "./SwatchPanel";
 import posed from "react-pose";
 import tinycolor from "tinycolor2";
 import { useState } from "react";
@@ -31,7 +32,7 @@ interface PaletteBarProps {
   colors: tinycolor.Instance[];
   activeColorKey: number;
   handleColorClick: (key: number) => void;
-  handlePickerColorChange: (color: ColorResult) => void;
+  handlePickerColorChange: (colorHex: string) => void;
   handleColorRefreshClick: () => void;
   handleDragEnd: (result: DropResult) => void;
 }
@@ -95,11 +96,16 @@ const PaletteBar: React.FC<PaletteBarProps> = ({
           <ChromePicker
             disableAlpha
             color={colors[activeColorKey].toHexString()}
-            onChange={handlePickerColorChange}
+            onChange={(color) => handlePickerColorChange(color.hex)}
           />
         )}
 
-        {panel === "swatch" && <div className="palette-bar-swatch">Swatch</div>}
+        {panel === "swatch" && (
+          <SwatchPanel
+            colorInput={colors[activeColorKey].toHexString()}
+            setColorInput={handlePickerColorChange}
+          />
+        )}
 
         {panel === "share" && <div className="palette-bar-share">Share</div>}
       </div>

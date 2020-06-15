@@ -39,7 +39,7 @@
 }
 
 .palette-bar-panel {
-  height: 245px;
+  min-height: 245px;
 }
 
 .chrome-picker {
@@ -56,8 +56,4 @@
   border-radius: 0px !important;
   outline: none !important;
   box-shadow: none !important;
-}
-
-.palette-bar-swatch {
-  /*  */
 }

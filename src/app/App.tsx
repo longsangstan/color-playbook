@@ -10,7 +10,7 @@ import ButtonBar from "./ButtonBar";
 import ColorPage from "../color-page/ColorPage";
 import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
-import PaletteBar from "./PaletteBar";
+import PaletteBar from "../shared/palette-bar/PaletteBar";
 import PalettePage from "../palette-page/PalettePage";
 import ReactGA from "react-ga";
 import getPaletteFromQueryParams from "../utils/get-palette-from-query-params";
@@ -83,9 +83,9 @@ const App: React.FC<AppProps> = (props) => {
     }
   };
 
-  const handlePickerColorChange = (color: ColorResult) => {
+  const handlePickerColorChange = (colorHex: string) => {
     let newInput = [...paletteBarInput];
-    newInput[activeColorKey] = tinycolor(color.hex);
+    newInput[activeColorKey] = tinycolor(colorHex);
 
     setPaletteBarInput(newInput);
   };
