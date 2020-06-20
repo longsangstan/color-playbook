@@ -19,13 +19,17 @@ const MaterialDesign: React.FC<MaterialDesignProps> = ({ colors }) => {
     },
   });
 
+  const themeTwo = createMuiTheme({
+    palette: {
+      primary: { main: colors[3].toHexString() },
+      secondary: { main: colors[4].toHexString() },
+    },
+  });
+
   return (
     <div style={{ fontFamily: "Roboto" }}>
       <ThemeProvider theme={theme}>
         <Box>
-          <Box component="span" m={0.5}>
-            <Button variant="contained">Default</Button>
-          </Box>
           <Box component="span" m={0.5}>
             <Button variant="contained" color="primary">
               Primary
@@ -36,18 +40,41 @@ const MaterialDesign: React.FC<MaterialDesignProps> = ({ colors }) => {
               Secondary
             </Button>
           </Box>
+
+          <ThemeProvider theme={themeTwo}>
+            <Box component="span" m={0.5}>
+              <Button variant="contained" color="primary">
+                Custom One
+              </Button>
+            </Box>
+            <Box component="span" m={0.5}>
+              <Button variant="contained" color="secondary">
+                Custom Two
+              </Button>
+            </Box>
+          </ThemeProvider>
         </Box>
 
         <Box m={4}>
-          <Box component="span" m={0.5}>
-            <Button>Default</Button>
-          </Box>
           <Box component="span" m={0.5}>
             <Button color="primary">Primary</Button>
           </Box>
           <Box component="span" m={0.5}>
             <Button color="secondary">Secondary</Button>
           </Box>
+
+          <ThemeProvider theme={themeTwo}>
+            <Box component="span" m={0.5}>
+              <Button variant="outlined" color="primary">
+                Custom One
+              </Button>
+            </Box>
+            <Box component="span" m={0.5}>
+              <Button variant="outlined" color="secondary">
+                Custom Two
+              </Button>
+            </Box>
+          </ThemeProvider>
         </Box>
 
         <Box m={4}>
