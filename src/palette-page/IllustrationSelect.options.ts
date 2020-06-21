@@ -10,6 +10,8 @@ export const graphicsOptions: OptionType[] = [
   { value: "gradients", label: "Gradients" },
 ];
 
+export const otherOptions: OptionType[] = [{ value: "text", label: "Text" }];
+
 export const groupedOptions = [
   {
     label: "UI",
@@ -18,5 +20,9 @@ export const groupedOptions = [
   {
     label: "Graphics",
     options: graphicsOptions,
+  },
+  {
+    label: "Others",
+    options: otherOptions,
   },
 ];
