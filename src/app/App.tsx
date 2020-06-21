@@ -7,7 +7,6 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import AboutPage from "../about-page/AboutPage";
 import ButtonBar from "./ButtonBar";
-import ColorPage from "../color-page/ColorPage";
 import { DropResult } from "react-beautiful-dnd";
 import PaletteBar from "../shared/palette-bar/PaletteBar";
 import PalettePage from "../palette-page/PalettePage";
@@ -39,17 +38,6 @@ const App: React.FC<AppProps> = (props) => {
   const pushPath = (path: string) => {
     ReactGA.pageview(path);
     history.push(path);
-  };
-
-  /**
-   * Color Page
-   */
-
-  const colorInput =
-    typeof queryParams.input === "string" ? queryParams.input : "";
-
-  const setColorInput = (input: string) => {
-    history.push(`/color?input=${input.replace(/#/g, "")}`);
   };
 
   /**
@@ -127,13 +115,6 @@ const App: React.FC<AppProps> = (props) => {
   return (
     <div className="App">
       <Switch>
-        <Route
-          path="/color"
-          render={() => (
-            <ColorPage colorInput={colorInput} setColorInput={setColorInput} />
-          )}
-        />
-
         <Route
           path="/palette"
           render={() => (
