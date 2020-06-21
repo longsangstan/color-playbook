@@ -36,6 +36,7 @@ const Text: React.FC<TextProps> = ({ colors }) => {
               style={{ color: secondColor }}
               href={designBooks[bookKey].url}
               target="_blank"
+              rel="noopener noreferrer"
             >
               {designBooks[bookKey].title}
             </a>
