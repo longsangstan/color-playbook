@@ -1,6 +1,5 @@
 import "./PaletteBar.css";
 
-import { ChromePicker, ColorResult } from "react-color";
 import {
   DragDropContext,
   Draggable,
@@ -8,6 +7,7 @@ import {
   Droppable,
 } from "react-beautiful-dnd";
 
+import { ChromePicker } from "react-color";
 import ColorPlate from "../ColorPlate";
 import IconButton from "../IconButton";
 import React from "react";

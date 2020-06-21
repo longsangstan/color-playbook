@@ -8,7 +8,6 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import AboutPage from "../about-page/AboutPage";
 import ButtonBar from "./ButtonBar";
 import ColorPage from "../color-page/ColorPage";
-import { ColorResult } from "react-color";
 import { DropResult } from "react-beautiful-dnd";
 import PaletteBar from "../shared/palette-bar/PaletteBar";
 import PalettePage from "../palette-page/PalettePage";

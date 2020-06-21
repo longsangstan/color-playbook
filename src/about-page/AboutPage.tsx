@@ -38,8 +38,11 @@ const AboutPage: React.FC = () => {
       </a>
 
       <p>
-        Made with ❤️💛💚💙💜 by{" "}
-        <a href="https://clss.hk/?utm_source=color">clss.hk</a>
+        Made with{" "}
+        <span role="img" aria-label="hearts">
+          ❤️💛💚💙💜
+        </span>{" "}
+        by <a href="https://clss.hk/?utm_source=color">clss.hk</a>
       </p>
     </div>
   );
