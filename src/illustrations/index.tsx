@@ -1,3 +1,4 @@
+import { Ad } from "./Ad";
 import Bootstrap from "./Bootstrap";
 import Gradients from "./Gradients";
 import MaterialDesign from "./MaterialDesign";
@@ -24,6 +25,8 @@ const Illustrations: React.FC<IllustrationsProps> = ({ colors, type }) => {
       {type === "gradients" && <Gradients colors={colors} />}
 
       {type === "text" && <Text colors={colors} />}
+
+      <Ad colors={colors} />
     </>
   );
 };
