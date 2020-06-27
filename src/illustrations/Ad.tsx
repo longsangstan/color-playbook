@@ -9,17 +9,19 @@ interface AdProps {
   colors: tinycolor.Instance[];
 }
 
-export const Ad: React.FC<AdProps> = ({ colors, bookKey = 0 }) => {
+export const Ad: React.FC<AdProps> = ({ colors, bookKey }) => {
+  bookKey = bookKey || Math.floor(Math.random() * designBooks.length);
+
   return (
     <div
       className="Ad with-shadow"
-      style={{ backgroundColor: colors[0].toHexString() }}
+      style={{ backgroundColor: colors[1].isDark() ? "white" : "black" }}
     >
       <div
         className="Ad__label"
         style={{
-          backgroundColor: colors[2].toHexString(),
-          color: colors[2].isDark() ? "white" : "black",
+          backgroundColor: colors[1].toHexString(),
+          color: colors[2].toHexString(),
         }}
       >
         Ad
@@ -34,7 +36,7 @@ export const Ad: React.FC<AdProps> = ({ colors, bookKey = 0 }) => {
         <img className="Ad__img" src={designBooks[bookKey].img} alt="ad" />
         <div
           className="Ad__bookTitle"
-          style={{ borderColor: colors[1].toHexString() }}
+          style={{ textDecorationColor: colors[1].toHexString() }}
         >
           {designBooks[bookKey].title}
         </div>
@@ -50,7 +52,7 @@ export const Ad: React.FC<AdProps> = ({ colors, bookKey = 0 }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        More design classics..
+        More classic design books...
       </a>
     </div>
   );

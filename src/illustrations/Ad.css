@@ -19,11 +19,12 @@
 }
 
 .Ad__bookTitle {
-  border-bottom: 3px solid black;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
 }
 
 .Ad__action {
-  border-radius: 25px;
+  border-radius: 24px;
   padding: 10px;
   font-size: 12px;
   font-weight: bold;
