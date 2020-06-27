@@ -9,9 +9,7 @@ interface AdProps {
   colors: tinycolor.Instance[];
 }
 
-export const Ad: React.FC<AdProps> = ({ colors, bookKey }) => {
-  bookKey = bookKey || Math.floor(Math.random() * designBooks.length);
-
+export const Ad: React.FC<AdProps> = ({ colors, bookKey = 0 }) => {
   return (
     <div
       className="Ad with-shadow"
