@@ -1,3 +1,3 @@
-## Color App
+## Color Playbook
 
-URL: [https://color.clss.hk](https://color.clss.hk)
+URL: [https://colorplaybook.com](https://colorplaybook.com)
