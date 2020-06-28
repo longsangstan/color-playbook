@@ -33,8 +33,8 @@ const AboutPage: React.FC = () => {
       </p>
 
       <h1>Source Code</h1>
-      <a href="https://github.com/longsangstan/color-app">
-        github/longsangstan/color-app
+      <a href="https://github.com/longsangstan/color-playbook">
+        github/longsangstan/color-playbook
       </a>
 
       <p>
