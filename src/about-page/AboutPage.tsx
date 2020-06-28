@@ -17,11 +17,11 @@ const AboutPage: React.FC = () => {
         <br />
         <a
           href={`${
-            process.env.REACT_APP_ROOT_PATH || "http://localhost:3000"
+            window.location.origin || "http://localhost:3000"
           }/palette?colors=502FF2,323B58,58477D,C94F81,27E5CE`}
         >
           {`${
-            process.env.REACT_APP_ROOT_PATH || "http://localhost:3000"
+            window.location.origin || "http://localhost:3000"
           }/palette?colors=502FF2,323B58,58477D,C94F81,27E5CE`}
         </a>
       </p>
